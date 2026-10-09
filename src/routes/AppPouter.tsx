@@ -5,6 +5,8 @@ import CartPage from "../pages/Cart";
 import WishlistPage from "../pages/Wishlist";
 import ManPage from "../pages/Man";
 import AboutPage from "../pages/About";
+import ProductPage from "../pages/Products";
+import NotFound from "../pages/NotFound";
 function AppPouter() {
   const router = createBrowserRouter([
     {
@@ -30,6 +32,14 @@ function AppPouter() {
         {
           path: "about",
           element: <AboutPage />,
+        },
+        {
+          path: "Products",
+          element: <ProductPage />,
+        },
+        {
+          path: "*",
+          element: <NotFound />,
         },
       ],
     },
