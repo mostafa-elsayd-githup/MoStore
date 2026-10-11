@@ -1,4 +1,4 @@
-import { Outlet } from "react-router";
+import { Outlet, ScrollRestoration } from "react-router";
 import NavBar from "../components/common/NavBar";
 import Footer from "../components/common/Footer";
 import DiscountComponent from "../components/common/DiscountComponent";
@@ -8,6 +8,7 @@ function MainLayout() {
     <div className="flex flex-col min-h-screen bg-(--bg-main)">
       <header className="fixed top-4 left-0 right-0 z-50 flex justify-center w-full px-4 pointer-events-none">
         <div className="w-full flex justify-center pointer-events-auto">
+         <ScrollRestoration />
           <NavBar />
         </div>
       </header>
