@@ -5,8 +5,8 @@ import CartPage from "../pages/Cart";
 import WishlistPage from "../pages/Wishlist";
 import ManPage from "../pages/Man";
 import AboutPage from "../pages/About";
-import ProductPage from "../pages/Products";
-import NotFound from "../pages/NotFound";
+import ProductPage from "../pages/Product/ProductPage";
+import NotFound from "../pages/NotFoundRoute";
 function AppPouter() {
   const router = createBrowserRouter([
     {
@@ -34,8 +34,9 @@ function AppPouter() {
           element: <AboutPage />,
         },
         {
-          path: "Products",
+          path: "Products/:category",
           element: <ProductPage />,
+          handle:{cuumb:"المنتجات"}
         },
         {
           path: "*",
