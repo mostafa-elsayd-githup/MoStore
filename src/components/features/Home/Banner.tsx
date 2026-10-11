@@ -8,6 +8,7 @@ function HeroSection({
   subtitle,
   buttontext,
   buttonlink,
+  PageTitle,
 }: HomeBannerProp) {
   const TitleWords = title.split(" ");
   const SubTitleWords = subtitle.split(" ");
@@ -82,7 +83,13 @@ function HeroSection({
             ))}
           </motion.p>
 
-          <MainButton btnlink={buttonlink} btntext={buttontext} coloe="white" z_index="-1" />
+          <MainButton
+          title={PageTitle}
+            btnlink={buttonlink}
+            btntext={buttontext}
+            coloe="white"
+            z_index="-1"
+          />
         </div>
       </section>
     </motion.section>

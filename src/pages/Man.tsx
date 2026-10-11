@@ -10,37 +10,49 @@ import ManUnited from "../assets/manutd.svg";
 import liverpool from "../assets/liverPool.svg";
 import bayern from "../assets/bayern.svg";
 import arsenal from "../assets/arsenal.svg";
+import type {SportSectionProp } from "../types/HomeTypes/HmeBanner";
 function ManPage() {
-  const SportSection = [
+  const SportSection:SportSectionProp[] = [
     {
       image: alahlyClub,
       SetionName: "الاهلى",
-      pathLink: "/products",
+      pathLink: "/products/alahly",
+      PageTitle:"تشكيلة أطقم نادي القرن - الأهلي"
     },
     {
       image: realmadrid,
       SetionName: "ريال مدريد",
-      pathLink: "/products",
+      pathLink: "/products/Real Madrid",
+      PageTitle:"أطقم نادي ريال مدريد الرسمية"
+
     },
     {
       image: ManUnited,
       SetionName: "مانشستر يونايتد",
-      pathLink: "/products",
+      pathLink: "/products/Man United",
+      PageTitle:"تشكيلة نادي مانشستر يونايتد"
+
     },
     {
       image: liverpool,
       SetionName: "ليفربول",
-      pathLink: "/products",
+      pathLink: "/products/Liverpool",
+      PageTitle:"تشكيلة نادي ليفربول الرسمية"
+
     },
     {
       image: bayern,
       SetionName: "بايرن ميونخ",
-      pathLink: "/products",
+      pathLink: "/products/Bayern Munich",
+      PageTitle:"تشكيلة نادي بايرن ميونخ"
+
     },
     {
-      image:arsenal,
+      image: arsenal,
       SetionName: "ارسنال",
-      pathLink: "/products",
+      pathLink: "/products/ArsenalClub",
+      PageTitle:"أطقم نادي أرسنال الرسمية"
+
     },
   ];
   const SectionHeader = "نداء إلى جميع عشاق كرة القدم".split(" ");
@@ -51,16 +63,18 @@ function ManPage() {
         mobileimg={ManSection1OmgMobile}
         title="واصلوا الاحتفالات"
         subtitle="اكتشف أطقم المنتخبات الرسمية واحتفل بكل لحظة فوز بنفس روح أبطالك"
-        buttonlink="/products"
+        buttonlink="/products/Men_s_Jerseys"
         buttontext="تسوق الان"
+        PageTitle="أطقم المنتخبات الرسمية للاحتفالات"
       />
       <HeroSection
         desktopimg={ManSection2ImgDeskTop}
         mobileimg={ManSection2OmgMobile}
         title="خطوات تصنع أسلوبك"
         subtitle="تصاميم كلاسيكية تناسب إطلالتك اليومية"
-        buttonlink="/products"
+        buttonlink="/products/Sneakers_for_Men"
         buttontext="تسوق الان"
+        PageTitle="أطقم المنتخبات الرسمية للاحتفالات"
       />
       <SportsSection
         sportList={SportSection}

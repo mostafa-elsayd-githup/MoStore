@@ -5,11 +5,13 @@ export interface HomeBannerProp {
   subtitle: string;
   buttontext?: string;
   buttonlink?: string;
+  PageTitle: string;
 }
 export interface SportSectionProp {
   image: string;
   SetionName: string;
   pathLink: string;
+  PageTitle: string;
 }
 export interface sport {
   sportList: [];
@@ -21,4 +23,5 @@ export interface ButtonType {
   coloe?: string;
   z_index?: string;
   textColor?: string;
+  title: string;
 }

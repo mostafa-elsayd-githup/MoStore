@@ -7,10 +7,12 @@ function MainButton({
   coloe,
   z_index,
   textColor,
-}: ButtonType) {  
+  title,
+}: ButtonType) {
   return (
     <NavLink
       to={btnlink || "/"}
+      state={title}
       style={{ background: coloe, color: textColor }}
       className={`flex relative text-black hover:bg-[#eeeeee] py-2 px-10 text-4xl cursor-pointer mt-4 w-fit transition-all`}
     >

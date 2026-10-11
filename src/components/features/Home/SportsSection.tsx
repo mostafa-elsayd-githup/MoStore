@@ -78,6 +78,7 @@ function SportsSection({
 
                 <NavLink
                   to={item.pathLink}
+                  state={item.PageTitle}
                   className="absolute bottom-6 right-6 z-10 text-white font-bold text-lg hover:underline flex items-center gap-2"
                 >
                   {item.SetionName}

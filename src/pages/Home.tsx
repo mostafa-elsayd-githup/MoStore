@@ -9,33 +9,38 @@ import tenesImg from "../assets/tenes.svg";
 import runImg from "../assets/run.svg";
 import GymImg from "../assets/gem.svg";
 import basketBallImg from "../assets/basctball.svg";
-import type { SportSectionProp } from "../types/HomeTypes/HmeBanner";
+import type {  SportSectionProp } from "../types/HomeTypes/HmeBanner";
 function HomePage() {
   const SportSection: SportSectionProp[] = [
     {
       image: footballImg,
       SetionName: "FootBall",
-      pathLink: "/products",
+      pathLink: "/products/Football",
+      PageTitle: "معدات وأزياء كرة القدم الاحترافية",
     },
     {
       image: tenesImg,
       SetionName: "Tennis",
-      pathLink: "/products",
+      pathLink: "/products/tennis",
+      PageTitle: "أزياء ومعدات التنس الرياضية",
     },
     {
       image: runImg,
       SetionName: "Running",
-      pathLink: "/products",
+      pathLink: "/products/Running",
+      PageTitle: "تشكيلة أديداس للجري",
     },
     {
       image: GymImg,
       SetionName: "Gym",
-      pathLink: "/products",
+      pathLink: "/products/GEM",
+      PageTitle: "ملابس وأحذية تدريبات الجيم",
     },
     {
       image: basketBallImg,
       SetionName: "BasketBall",
-      pathLink: "/products",
+      pathLink: "/products/Basketball",
+      PageTitle: "تشكيلة كرة السلة العصرية",
     },
   ];
   const Header = "رياضتك تبدأ من هنا...؟".split(" ");
@@ -47,7 +52,8 @@ function HomePage() {
         title="طاقة تجدد حركتك"
         subtitle="احصل على أفضل المعدات الرياضية لتتجاوز أهدافك اليومية"
         buttontext="تسوق الان"
-        buttonlink="/products"
+        buttonlink="/products/Running"
+        PageTitle="تشكيله اديداس للجرى"
       />
       <HeroSection
         desktopimg={sportImgDeskTop}
@@ -55,12 +61,10 @@ function HomePage() {
         title="تجهّز لتدريبك القادم"
         subtitle="ملابس وأحذية تمارين الجيم المصممة لدعم حركتك وقوة تحملك"
         buttontext="تسوق الان"
-        buttonlink="/products"
+        buttonlink="/products/gym"
+        PageTitle="ملابس وأحذية تدريبات الجيم"
       />
-      <SportsSection
-        sportList={SportSection}
-        sportSectionHeader={Header}
-      />
+      <SportsSection sportList={SportSection} sportSectionHeader={Header} />
     </div>
   );
 }
