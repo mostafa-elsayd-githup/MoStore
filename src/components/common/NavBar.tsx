@@ -4,6 +4,8 @@ import Logo from "../ui/logo";
 import ThemeButton from "../features/Theme/ThemeButton";
 import type { RoutsList } from "../../types/NavBarType/RoutsNavType";
 import { useState } from "react";
+import { useWishlistStore } from "../../store/WishlistStore";
+import { useCartStore } from "../../store/cardStore";
 
 function NavBar() {
   const Route: RoutsList[] = [
@@ -11,7 +13,8 @@ function NavBar() {
     { id: 2, pageName: "الرجال", path: "/man" },
     { id: 3, pageName: "من نحن", path: "/about" },
   ];
-
+  const WishlistLength = useWishlistStore((state) => state.Wishlist);
+  const CartLength = useCartStore((state) => state.cart);
   const [isOpen, setisOPen] = useState<boolean>(false);
   const ToggleMenu = () => setisOPen(!isOpen);
 
@@ -53,15 +56,36 @@ function NavBar() {
           </div>
 
           <div className="flex items-center gap-3 text-(--color-primary) mr-1">
-            <NavLink to="/cart" className="hover:opacity-80 transition-opacity">
+            <NavLink
+              to="/cart"
+              className={({ isActive }) =>
+                `relative hover:opacity-80 transition-opacity ${isActive ? "bg-(--bg-searchinput) font-bold text-(--text-h)" : "text-(--text-normal)"}`
+              }
+            >
+              {CartLength.length > 0 ? (
+                <span className="absolute flex items-center justify-center bg-(--bg-badge)  text-(--color-main) w-4 h-4 rounded-full  text-sm -right-2 -top-2 animate-bounce">
+                  {CartLength.length}
+                </span>
+              ) : null}
+
               <ShoppingBag size={20} />
             </NavLink>
-            <NavLink
-              to="/wishlist"
-              className="hover:opacity-80 transition-opacity"
-            >
-              <Heart size={20} />
-            </NavLink>
+            <div className="relative">
+              <NavLink
+                to="/wishlist"
+                className={({ isActive }) =>
+                  `relative hover:opacity-80 transition-opacity ${isActive ? "bg-(--bg-searchinput) font-bold text-(--text-h) " : "text-(--text-normal)"}`
+                }
+              >
+                {WishlistLength.length > 0 ? (
+                  <span className="absolute flex  items-center justify-center bg-(--bg-badge)  text-(--color-main) w-4 h-4 rounded-full  text-sm -right-2 -top-2 animate-bounce">
+                    {WishlistLength.length}
+                  </span>
+                ) : null}
+
+                <Heart size={20} />
+              </NavLink>
+            </div>
             <ThemeButton />
           </div>
         </div>
