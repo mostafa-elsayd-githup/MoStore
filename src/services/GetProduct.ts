@@ -1,15 +1,19 @@
 import { api } from "../api/api";
-import type { ProductTypeProp } from "../types/ProductsType/Product";
-export const GetProducts = async ({
+import type { ProductTypeProp, propType } from "../types/ProductsType/Product";
+const table = "/products";
+export const GetProductsByType = async ({
   category,
   signal,
-}: {
-  category: string;
-  signal: AbortSignal;
-}):Promise<ProductTypeProp[]> => {
-  const req = await api.get(`/products?select=*&type=eq.${category}`, {
+}: propType): Promise<ProductTypeProp[]> => {
+  const req = await api.get(`${table}?select=*&type=eq.${category}`, {
     signal,
   });
-
   return req.data;
+};
+export const GetProductById_productDetils = async ({
+  productId,
+  signal,
+}: propType): Promise<ProductTypeProp> => {
+  const req = await api.get(`${table}?select=*&id=eq.${productId}`, { signal }); 
+  return req.data[0];
 };
