@@ -9,7 +9,7 @@ import tenesImg from "../assets/tenes.svg";
 import runImg from "../assets/run.svg";
 import GymImg from "../assets/gem.svg";
 import basketBallImg from "../assets/basctball.svg";
-import type {  SportSectionProp } from "../types/HomeTypes/HmeBanner";
+import type {  SportSectionProp } from "../types/HomeTypes/HomeBanner";
 function HomePage() {
   const SportSection: SportSectionProp[] = [
     {

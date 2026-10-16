@@ -10,7 +10,7 @@ import ManUnited from "../assets/manutd.svg";
 import liverpool from "../assets/liverPool.svg";
 import bayern from "../assets/bayern.svg";
 import arsenal from "../assets/arsenal.svg";
-import type {SportSectionProp } from "../types/HomeTypes/HmeBanner";
+import type {SportSectionProp } from "../types/HomeTypes/HomeBanner";
 function ManPage() {
   const SportSection:SportSectionProp[] = [
     {

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import type { ButtonType } from "../../types/HomeTypes/HmeBanner";
+import type { ButtonType } from "../../types/HomeTypes/HomeBanner";
 
 function MainButton({
   btnlink,

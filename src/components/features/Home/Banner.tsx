@@ -1,4 +1,4 @@
-import type { HomeBannerProp } from "../../../types/HomeTypes/HmeBanner";
+import type { HomeBannerProp } from "../../../types/HomeTypes/HomeBanner";
 import { motion } from "framer-motion";
 import MainButton from "../../ui/Button";
 function HeroSection({
