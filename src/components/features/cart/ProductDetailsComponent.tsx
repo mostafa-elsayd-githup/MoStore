@@ -1,14 +1,27 @@
 import { Link } from "react-router";
 import { useCartStore } from "../../../store/cardStore";
 import { DiscountCalc, formatCurrency } from "../../../utils/formatters";
-import { Trash2 } from "lucide-react";
+import { ShoppingBag, Trash2 } from "lucide-react";
+import EmptyList from "../../common/EmptyList";
+import { usePageTitle } from "../../../hooks/usePageTitle";
 
 function ProductDetailsComponent() {
+  const { pageTitle } = usePageTitle();
   const { cart, clearAll, deleteProduct } = useCartStore();
   return (
     <section>
-      <div className="bg-linear-to-br from-(--bg-card) to-(--bg-primary)  rounded-3xl border border-(--border_card) shadow-(--shadow) p-6 flex justify-around flex-col gap-4 ml-4">
-        <div className=" flex flex-col gap-4 px-4 pb-12 max-h-120 overflow-y-auto">
+      <div className="bg-linear-to-br from-(--bg-card) to-(--bg-primary)  rounded-3xl border border-(--border_card) shadow-(--shadow) p-6 flex justify-around flex-col ml-4">
+        <div
+          className={`flex flex-col gap-4 px-4 pb-12  ${!cart.length ? null : "overflow-y-auto"}`}
+        >
+          {!cart.length && (
+            <EmptyList
+              namePage={pageTitle}
+              pageIcon={
+                <ShoppingBag className="text-white w-25 h-25 p-2 rounded-full bg-linear-to-r from-(--color-main) via-( --bg-searchinput) to-(--text-footer) to-60% animate-pulse" />
+              }
+            />
+          )}
           {cart.map((product) => {
             const imageUrl = Array.isArray(product.image)
               ? product.image[0]
@@ -31,7 +44,10 @@ function ProductDetailsComponent() {
                   )}
                 </div>
                 <div className="flex flex-col flex-1 min-w-0 gap-2.5 text-start w-full hover:underline">
-                  <Link to={`/productdetails/${product.id}`} className="text-base sm:text-lg font-bold leading-snug text-(--text-h) line-clamp-1">
+                  <Link
+                    to={`/productdetails/${product.id}`}
+                    className="text-base sm:text-lg font-bold leading-snug text-(--text-h) line-clamp-1"
+                  >
                     {product.title}
                   </Link>
                   <div className="flex flex-wrap items-center gap-2 text-xs">

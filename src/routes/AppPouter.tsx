@@ -8,6 +8,11 @@ import AboutPage from "../pages/About";
 import ProductPage from "../components/features/cart/ProductPage";
 import NotFound from "../components/common/NotFoundRoute";
 import ProductDetails from "../pages/ProductDetails";
+import CheckOutPage from "../pages/CheckOut";
+import AuthLayout from "../layouts/AuthLayout";
+import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
+import ProtectedRoute from "./ProtectedRoute";
 function AppPouter() {
   const router = createBrowserRouter([
     {
@@ -21,10 +26,12 @@ function AppPouter() {
         {
           path: "cart",
           element: <CartPage />,
+          handle: { title: "عربه التسوق" },
         },
         {
           path: "wishlist",
           element: <WishlistPage />,
+          handle: { title: "المفضله" },
         },
         {
           path: "man",
@@ -37,16 +44,44 @@ function AppPouter() {
         {
           path: "Products/:category",
           element: <ProductPage />,
-          handle: { cuumb: "المنتجات" },
+          handle: { title: "المنتجات" },
         },
         {
           path: "/productdetails/:id",
           element: <ProductDetails />,
-          handle: { cuumb: "المنتجات" },
+          handle: { title: "المنتجات" },
+        },
+        {
+          element: <ProtectedRoute />,
+          children: [
+            {
+              path: "checkout",
+              element: <CheckOutPage />,
+              handle: {
+                title: "اتمام الطلب والدفع",
+                requiresAuth: true,
+                Layout: "minimal",
+                metaTitle: "MoStore",
+              },
+            },
+          ],
         },
         {
           path: "*",
           element: <NotFound />,
+        },
+      ],
+    },
+    {
+      element: <AuthLayout />,
+      children: [
+        {
+          path: "login",
+          element: <LoginPage />,
+        },
+        {
+          path: "register",
+          element: <RegisterPage />,
         },
       ],
     },
