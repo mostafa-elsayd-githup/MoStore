@@ -78,7 +78,7 @@ function NavBar() {
                 }
               >
                 {WishlistLength.length > 0 ? (
-                  <span className="absolute flex  items-center justify-center bg-(--bg-badge)  text-(--color-main) w-4 h-4 rounded-full  text-sm -right-2 -top-2 animate-bounce">
+                  <span className="absolute flex  items-center justify-center bg-(--bg-badge)  text-(--color-main) w-4 h-4 rounded-full  text-sm -right-4 -top-2 animate-bounce z-10">
                     {WishlistLength.length}
                   </span>
                 ) : null}
