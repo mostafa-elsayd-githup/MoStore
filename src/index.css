@@ -12,6 +12,7 @@
   --bg-primary: #f0efec;
   --bg-card: #fbfaf8;
   --bg-navbar: #fcfbf8;
+  --bg-glassy: #ffffff1a;
   --bg-footer: #f6f4e7;
   --bg-searchinput: #ecebe7;
   --bg-little: #fbfaf8;
@@ -102,7 +103,7 @@
   --loader-track: var(--border_card, #222222);
   --loader-glow: var(--color-sale, #ff453a);
   --loader-text: var(--color-secondary, #a1a1aa);
-  --shadow: 0px 12px 30px #00000080;
+  --shadow: 0px 12px 30px #35343480;
   --shadow-navbar: 0 1px 0 #ffffff0a, 0 8px 24px #00000066;
 }
 
