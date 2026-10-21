@@ -161,16 +161,9 @@ export default function ProductPage() {
     oldprice: product.oldPrice,
     video: "",
   };
-  if (isPending) {
-    return (
-      <section className="relative isolate overflow-hidden bg-(--bg-main) text-(--text-h)">
-        <ProductSkeleton />
-      </section>
-    );
-  }
-
   return (
     <section className="relative isolate overflow-hidden bg-(--bg-main) text-(--text-h)">
+      {isPending && <ProductSkeleton />}
       <div
         aria-hidden
         className={`pointer-events-none absolute -top-40 -inset-s-40 -z-10 h-130 w-130 rounded-full blur-3xl `}
