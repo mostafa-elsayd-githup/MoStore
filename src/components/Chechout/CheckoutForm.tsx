@@ -7,21 +7,29 @@ import {
   Building,
   CreditCard,
   ShieldCheck,
+  LoaderIcon,
 } from "lucide-react";
 import type { CheckoutFormData } from "../../types/CheckoutTypes/FormTypesInput";
-import { checkoutForm } from "../../services/CheckoutForm";
 import { checkoutSchema } from "../../validations/CheckoutFormDataSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useSumbitForm } from "../../hooks/useOnSubmitCheckoutForm";
+import { useCartStore } from "../../store/cardStore";
 export default function CheckoutForm() {
+  const { clearAll } = useCartStore();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<CheckoutFormData>({ resolver: zodResolver(checkoutSchema) });
-
-  const onSubmit = (dataForm: CheckoutFormData) => {
-    const x = checkoutForm({ dataForm });
-    console.log(x);
+  const { submitOrder, isPending } = useSumbitForm();
+  const onSubmit = (formData: CheckoutFormData) => {
+    submitOrder(formData, {
+      onSuccess: () => {
+        reset();
+        clearAll();
+      },
+    });
   };
 
   return (
@@ -44,7 +52,7 @@ export default function CheckoutForm() {
               <input
                 type="text"
                 {...register("fullName")}
-                placeholder="محمد أحمد"
+                placeholder="مصطفى السيد"
                 className={`w-full bg-(--bg-searchinput) border ${errors.fullName ? " border-red-600 outline-0 " : "border-(--border-color) "} rounded-xl px-4 py-3 text-(--text-h) focus:outline-none transition-all mb-1`}
               />
               {errors.fullName && (
@@ -55,7 +63,7 @@ export default function CheckoutForm() {
             </div>
             <div className="text-start">
               <label className="block text-sm font-medium text-(--text-normal) mb-1">
-                البريد الإلكتروني
+                البريد الإلكتروني (اختياري)
               </label>
               <div className="relative ">
                 <span className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-(--text-normal)">
@@ -64,7 +72,7 @@ export default function CheckoutForm() {
                 <input
                   type="email"
                   {...register("email")}
-                  placeholder="name@example.com"
+                  placeholder="name@example.com "
                   className={`w-full bg-(--bg-searchinput) border ${errors.email ? " border-red-600 outline-0 " : "border-(--border-color) "} rounded-xl pr-10 pl-4 py-3 text-(--text-h) focus:outline-none transition-all mb-1`}
                 />
                 {errors.email && (
@@ -201,7 +209,13 @@ export default function CheckoutForm() {
           type="submit"
           className="w-full bg-(--color-primary) text-(--bg-main) font-bold py-4 rounded-xl shadow-lg hover:opacity-95 active:scale-[0.99] transition-all cursor-pointer"
         >
-          تأكيد وإتمام الطلب
+          {isPending ? (
+            <span className="animate-spin">
+              <LoaderIcon size={30} />
+            </span>
+          ) : (
+            "تأكيد وإتمام الطلب"
+          )}
         </button>
       </form>
     </div>

@@ -2,10 +2,8 @@ import PageHeader from "../components/common/PageHeader";
 import ProductDetailsComponent from "../components/features/cart/ProductDetailsComponent";
 import { useCartStore } from "../store/cardStore";
 import CheckoutForm from "../components/Chechout/CheckoutForm";
-import { useWelcomeMessage } from "../hooks/useRegister";
 
 function CheckOutPage() {
-  useWelcomeMessage();
   const { cart } = useCartStore((item) => item);  
   return (
     <section className="container m-auto">

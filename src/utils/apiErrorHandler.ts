@@ -1,6 +1,6 @@
 import type { ApiError } from "../types/AuthTypes/AuthFormType";
 
-const ERROR_MESSAGES_MAP: Record<number, string> = {
+export const ERROR_MESSAGES_MAP: Record<number, string> = {
   400: "البريد الإلكتروني أو كلمة المرور غير صحيحة",
   401: "غير مصرح لك، يرجى تسجيل الدخول مرة أخرى",
   403: "عذراً، لا تملك الصلاحية للقيام بهذا الإجراء",
