@@ -17,7 +17,7 @@ export const useRegister = () => {
   } = useMutation({
     mutationFn: creatUser,
     onSuccess: (response) => {
-      navigate(redirectTo, {
+      navigate(redirectTo || "/", {
         replace: true,
         state: {
           isRegisteredSuccessfully: true,
