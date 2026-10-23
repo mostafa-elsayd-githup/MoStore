@@ -10,14 +10,11 @@ export default function AuthLayout() {
         playsInline
         preload="auto"
         className="absolute inset-0 w-full h-full object-cover -z-10"
-      >
-        <source
-          src="/src/assets/8533450-uhd_3840_2160_25fps.mp4"
-          type="video/mp4"
-        />
-      </video>
+        src="/src/assets/13437044_1280_720_25fps.mp4"
+        poster="/src/assets/poster.svg"
+      ></video>
       <span className="absolute inset-0 bg-black/50 -z-10" />
-      
+
       <Outlet />
     </section>
   );
