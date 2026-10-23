@@ -1,4 +1,4 @@
-import MainButton from "../ui/Button";
+import MainButton from "../ui/Link";
 import type { EmptyListProps } from "../../types/ProductsType/Product";
 
 function EmptyList({ namePage, pageIcon }: EmptyListProps) {

@@ -1,4 +1,4 @@
-import MainButton from "../ui/Button";
+import MainButton from "../ui/Link";
 
 function DiscountComponent() {
   return (
