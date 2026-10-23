@@ -6,6 +6,8 @@ import type { RoutsList } from "../../types/NavBarType/RoutsNavType";
 import { useState } from "react";
 import { useWishlistStore } from "../../store/WishlistStore";
 import { useCartStore } from "../../store/cardStore";
+import LogoutButton from "../ui/logoutButton";
+import { motion } from "framer-motion";
 
 function NavBar() {
   const Route: RoutsList[] = [
@@ -25,18 +27,33 @@ function NavBar() {
           <Logo />
         </div>
 
-        <ul className="lg:flex-1 flex items-center justify-center gap-2 text-[17px] text-(--text-h)">
+        <ul className="lg:flex-1 flex items-center justify-around gap-2 text-[17px] text-(--text-h)">
           {Route.map((item) => (
             <li key={item.id}>
               <NavLink
                 to={item.path}
                 className={({ isActive }) =>
-                  `px-4 py-1.5 rounded-full transition-all duration-300
-                  hover:bg-(--bg-searchinput) hover:text-(--text-h)
-                  ${isActive ? "bg-(--bg-searchinput) font-bold text-(--text-h)" : "text-(--text-normal)"}`
+                  `relative px-4 py-2 rounded-full transition-all   duration-300 ${
+                    isActive && "text-(--color-main)  font-bold"
+                  }`
                 }
               >
-                {item.pageName}
+                {({ isActive }) => (
+                  <>
+                    <span className="relative z-10">{item.pageName}</span>
+                    {isActive && (
+                      <motion.span
+                        layoutId="active-pill"
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 35,
+                        }}
+                        className="absolute inset-0 bg-(--bg-badge) rounded-full z-0 shadow-sm"
+                      />
+                    )}
+                  </>
+                )}
               </NavLink>
             </li>
           ))}
@@ -47,7 +64,7 @@ function NavBar() {
             <input
               type="text"
               placeholder="Search..."
-              className=" outline-0 bg-(--bg-searchinput) py-1.5 pr-9 pl-3 text-sm text-(--color-secondary) rounded-2xl focus:shadow-(--shadow) transition-all placeholder:tracking-[1px] w-50 focus:w-60"
+              className=" outline-0 bg-(--bg-searchinput) py-1.5 pr-9 pl-3 text-sm text-(--color-secondary) rounded-2xl focus:shadow-(--shadow) transition-all placeholder:tracking-[1px] md:w-45 focus:w-60"
             />
             <Search
               size={18}
@@ -55,7 +72,7 @@ function NavBar() {
             />
           </div>
 
-          <div className="flex items-center gap-3 text-(--color-primary) mr-1">
+          <div className="flex items-center gap-2 text-(--color-primary) mr-1">
             <NavLink
               to="/cart"
               className={({ isActive }) =>
@@ -87,6 +104,7 @@ function NavBar() {
               </NavLink>
             </div>
             <ThemeButton />
+            <LogoutButton />
           </div>
         </div>
       </section>
@@ -136,6 +154,7 @@ function NavBar() {
                 <Heart size={20} />
               </NavLink>
               <ThemeButton />
+              <LogoutButton />
             </div>
           </div>
         </div>

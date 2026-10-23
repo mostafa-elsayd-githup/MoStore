@@ -15,7 +15,8 @@ export const useLogin = () => {
     error,
   } = useMutation({
     mutationFn: loginUser,
-    onSuccess: () => {
+    onSuccess: (data) => {
+      localStorage.setItem("sb-access-token", data?.access_token);
       navigate(redirectTo || "/");
     },
     onError: (err) => {
