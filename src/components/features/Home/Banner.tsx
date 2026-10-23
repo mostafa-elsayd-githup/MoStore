@@ -1,6 +1,6 @@
 import type { HomeBannerProp } from "../../../types/HomeTypes/HomeBanner";
 import { motion } from "framer-motion";
-import MainButton from "../../ui/Button";
+import MainButton from "../../ui/Link";
 function HeroSection({
   desktopimg,
   mobileimg,
@@ -22,10 +22,10 @@ function HeroSection({
   };
 
   const wordVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, x: -50 },
     visible: {
       opacity: 1,
-      y: 0,
+      x: 0,
       transition: { duration: 0.5, ease: "easeOut" as const },
     },
   };
@@ -84,7 +84,7 @@ function HeroSection({
           </motion.p>
 
           <MainButton
-          title={PageTitle}
+            title={PageTitle}
             btnlink={buttonlink}
             btntext={buttontext}
             coloe="white"
