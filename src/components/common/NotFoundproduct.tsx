@@ -1,7 +1,7 @@
 import { NavLink } from "react-router";
 import { motion, type Variants } from "framer-motion";
 import { scaleUp } from "../../animations/variants";
-export default function NoProductsFound() {
+export default function NoFoundProducts() {
   return (
     <motion.div
       initial="hidden"

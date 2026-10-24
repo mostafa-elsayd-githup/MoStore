@@ -25,6 +25,7 @@ import { useCartStore } from "../store/cardStore";
 import type { cartType } from "../types/storeType/CardType";
 import { toast } from "sonner";
 import type { ProductDetailsType } from "../types/ProductsType/productDetails";
+import NoFoundProducts from "../components/common/NotFoundproduct";
 const perks = [
   { icon: Truck, title: "Free Delivery", text: "On orders over EGP 999" },
   {
@@ -161,6 +162,9 @@ export default function ProductPage() {
     oldprice: product.oldPrice,
     video: "",
   };
+  if (!data) {
+    return <NoFoundProducts />;
+  }
   return (
     <section className="relative isolate overflow-hidden bg-(--bg-main) text-(--text-h)">
       {isPending && <ProductSkeleton />}
