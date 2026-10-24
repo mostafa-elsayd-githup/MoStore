@@ -6,7 +6,7 @@ function CartPage() {
   const cartItem = useCartStore((state) => state.cart);
   return (
     <section className="container m-auto">
-      <div className="relative text-start mx-4 mb-10 pb-4">
+      <div className="relative text-start mx-4 mb-10">
         <PageHeader numberOfItems={cartItem.length} />
         <span className="absolute bottom-0 left-0 w-full border-b border-(--border_card)" />
       </div>
