@@ -1,11 +1,12 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
 import { NavLink } from "react-router";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import type { SportSectionProp } from "../../../types/HomeTypes/HomeBanner";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/autoplay";
+import { fadeInUp } from "../../../animations/variants";
 
 function SportsSection({
   sportList,
@@ -49,7 +50,7 @@ function SportsSection({
             <motion.span
               key={index}
               variants={wordVariants}
-              className="inline-block text-start text-4xl mb-3 text-(--text-h)"
+              className="inline-block text-start text-4xl mb-10 text-(--text-h)"
             >
               {word}
             </motion.span>
@@ -70,12 +71,15 @@ function SportsSection({
         >
           {sportList.map((item, index: number) => (
             <SwiperSlide key={index} className="w-auto!">
-              <div
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                variants={fadeInUp as Variants}
+                viewport={{ once: true }}
                 style={{ backgroundImage: `url(${item.image})` }}
                 className="relative w-70 sm:w-84 md:w-91 min-h-157 bg-cover bg-center rounded-3xl shadow-md hover:scale-[1.02] transition-transform duration-300 select-none"
               >
-                <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent rounded-3xl pointer-events-none" />
-
+                <span className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent rounded-3xl pointer-events-none" />
                 <NavLink
                   to={item.pathLink}
                   state={item.PageTitle}
@@ -83,7 +87,7 @@ function SportsSection({
                 >
                   {item.SetionName}
                 </NavLink>
-              </div>
+              </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>

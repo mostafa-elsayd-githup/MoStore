@@ -5,7 +5,8 @@ import { formatCurrency } from "../../../utils/formatters";
 import { Link } from "react-router";
 import { getCartSummary } from "../../../utils/PriceSummation";
 import ProductDetailsComponent from "./ProductDetailsComponent";
-
+import { slideInRight, slideInLeft } from "../../../animations/variants";
+import { motion, type Variants } from "framer-motion";
 function CartComponent() {
   const cartItem = useCartStore((state) => state.cart);
 
@@ -23,9 +24,22 @@ function CartComponent() {
     );
   }
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-      <ProductDetailsComponent />
-      <div className="bg-linear-to-br from-(--bg-card) to-(--bg-primary) rounded-3xl border border-(--border_card) shadow-(--shadow) p-6 flex justify-around flex-col gap-4 ml-4">
+    <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        variants={slideInRight as Variants}
+        viewport={{ once: true }}
+      >
+        <ProductDetailsComponent />
+      </motion.div>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        variants={slideInLeft as Variants}
+        viewport={{ once: true }}
+        className="bg-linear-to-br from-(--bg-card) to-(--bg-primary) rounded-3xl border border-(--border_card) shadow-(--shadow) p-6 flex justify-around flex-col gap-4 ml-4"
+      >
         <h3 className="text-xl font-bold! text-(--text-h) border-b border-(--border_card) pb-4">
           ملخص الطلب
         </h3>
@@ -62,7 +76,7 @@ function CartComponent() {
         >
           إتمام الطلب والدفع
         </Link>
-      </div>
+      </motion.div>
     </section>
   );
 }

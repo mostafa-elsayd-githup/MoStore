@@ -1,5 +1,6 @@
 import type { HomeBannerProp } from "../../../types/HomeTypes/HomeBanner";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
+import { fadeInUp, slideInLeft } from "../../../animations/variants";
 import MainButton from "../../ui/Link";
 function HeroSection({
   desktopimg,
@@ -31,16 +32,15 @@ function HeroSection({
   };
   return (
     <motion.section
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial="hidden"
+      whileInView="visible"
+      variants={fadeInUp as Variants}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, ease: "easeInOut" }}
       className="relative min-h-100 w-full  overflow-hidden flex items-center "
     >
       <section className="relative min-h-200 w-full overflow-hidden flex items-center px-8">
         <picture className="absolute inset-0 w-full h-full">
           <source media="(min-width: 768px)" srcSet={desktopimg} />
-
           <img
             src={mobileimg}
             alt={title}
@@ -49,7 +49,7 @@ function HeroSection({
         </picture>
         <div className="flex flex-col gap-7 z-20">
           <motion.p
-            variants={containerVariants}
+            variants={slideInLeft as Variants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}

@@ -1,8 +1,15 @@
 import { NavLink } from "react-router";
-
+import { motion, type Variants } from "framer-motion";
+import { scaleUp } from "../../animations/variants";
 export default function NoProductsFound() {
   return (
-    <div className="min-h-[50vh] flex flex-col items-center justify-center text-center px-4 py-12">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      variants={scaleUp as Variants}
+      viewport={{ once: true }}
+      className="min-h-[50vh] flex flex-col items-center justify-center text-center px-4 py-12"
+    >
       <div className="w-20 h-20 bg-(--bg-card) border border-(--border_card) rounded-full flex items-center justify-center text-3xl mb-4 shadow-sm">
         🔍
       </div>
@@ -12,7 +19,8 @@ export default function NoProductsFound() {
       </h3>
 
       <p className="text-(--color-secondary) max-w-md text-sm mb-6 leading-relaxed">
-        عذراً، لم نتمكن من العثور على أي منتجات تطابق بحثك أو في هذا القسم. جرب تغيير خيارات البحث أو تصفح أقسام أخرى.
+        عذراً، لم نتمكن من العثور على أي منتجات تطابق بحثك أو في هذا القسم. جرب
+        تغيير خيارات البحث أو تصفح أقسام أخرى.
       </p>
 
       <div className="flex items-center gap-3 mt-4">
@@ -23,6 +31,6 @@ export default function NoProductsFound() {
           تصفح كل المنتجات
         </NavLink>
       </div>
-    </div>
+    </motion.div>
   );
 }

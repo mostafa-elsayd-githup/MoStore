@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ShieldCheck, Sparkles, TrendingUp, Users } from "lucide-react";
+import { scaleDown, slideInLeft, slideInRight } from "../animations/variants";
 
 export default function AboutPage() {
   const features = [
@@ -30,10 +31,10 @@ export default function AboutPage() {
     <section className="py-20 px-4 md:px-12 bg-(--bg-main) text-(--text-h) overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
+          variants={scaleDown as Variants}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
           <motion.span
@@ -53,10 +54,10 @@ export default function AboutPage() {
         </motion.div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial="hidden"
+            whileInView="visible"
+            variants={slideInRight as Variants}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
             className="space-y-8"
           >
             <div className="space-y-4">
@@ -87,10 +88,10 @@ export default function AboutPage() {
             </div>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial="hidden"
+            whileInView="visible"
+            variants={slideInLeft as Variants}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
             className="relative"
           >
             <div className="absolute -inset-1.5 bg-linear-to-r from-(--bg-badge) to-(--nav-link-color) rounded-3xl blur-lg opacity-30 animate-pulse"></div>
@@ -103,8 +104,7 @@ export default function AboutPage() {
                 muted
                 playsInline
                 className="w-full h-full object-cover"
-                
-              /> 
+              />
             </div>
           </motion.div>
         </div>
