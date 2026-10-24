@@ -107,21 +107,9 @@
   --shadow-navbar: 0 1px 0 #ffffff0a, 0 8px 24px #00000066;
 }
 
-@theme {
-  --font-cairo: "Cairo", system-ui, sans-serif;
-  --font-jakarta: "Plus Jakarta Sans", system-ui, sans-serif;
-}
-@theme {
-  --font-cairo: var(--font-arabic);
-  --font-jakarta: var(--font-latin);
-}
 [dir="rtl"],
 html[lang="ar"] {
   font-family: var(--font-arabic);
-}
-[dir="ltr"],
-html[lang="en"] {
-  font-family: var(--font-latin);
 }
 h1,
 h2,
@@ -154,7 +142,6 @@ h2 {
 }
 
 h1 {
-  /* font-size: 56px; */
   letter-spacing: -1.68px;
   margin: 32px 0;
   @media (max-width: 1024px) {
