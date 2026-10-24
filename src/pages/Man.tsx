@@ -1,15 +1,15 @@
 import HeroSection from "../components/features/Home/Banner";
-import ManSection1ImgDeskTop from "../assets/man-collicionback.svg";
-import ManSection1OmgMobile from "../assets/media_background_section1.svg";
-import ManSection2ImgDeskTop from "../assets/adidas_.svg";
-import ManSection2OmgMobile from "../assets/media_background_ForMobile.svg";
+import ManSection1ImgDeskTop from "../assets/man-collicionback.webp";
+import ManSection1OmgMobile from "../assets/media_background_section1.webp";
+import ManSection2ImgDeskTop from "../assets/adidas_.webp";
+import ManSection2OmgMobile from "../assets/media_background_ForMobile.webp";
 import SportsSection from "../components/features/Home/SportsSection";
-import alahlyClub from "../assets/alahly_fc.svg";
-import realmadrid from "../assets/real-madrid.svg";
-import ManUnited from "../assets/manutd.svg";
-import liverpool from "../assets/liverPool.svg";
-import bayern from "../assets/bayern.svg";
-import arsenal from "../assets/arsenal.svg";
+import alahlyClub from "../assets/alahly_fc.webp";
+import realmadrid from "../assets/real-madrid.webp";
+import ManUnited from "../assets/manutd.webp";
+import liverpool from "../assets/liverPool.webp";
+import bayern from "../assets/bayern.webp";
+import arsenal from "../assets/arsenal.webp";
 import type {SportSectionProp } from "../types/HomeTypes/HomeBanner";
 function ManPage() {
   const SportSection:SportSectionProp[] = [

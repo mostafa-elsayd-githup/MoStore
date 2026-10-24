@@ -1,14 +1,14 @@
 import HeroSection from "../components/features/Home/Banner";
-import HeroForDeskTop from "../assets/backgroud-hero_section.svg";
-import HeroForMobile from "../assets/backgroud-hero_section_for_moblie.svg";
-import sportImgMobile from "../assets/Gemini_Generated_Image_4tmmaw4tmmaw4tmm.svg";
-import sportImgDeskTop from "../assets/Gemini_Generated_Image_a0x8gaa0x8gaa0x8.svg";
+import HeroForDeskTop from "../assets/backgroud-hero_section.webp";
+import HeroForMobile from "../assets/backgroud-hero_section_for_moblie.webp";
+import sportImgMobile from "../assets/Gemini_Generated_Image_4tmmaw4tmmaw4tmm.webp";
+import sportImgDeskTop from "../assets/Gemini_Generated_Image_a0x8gaa0x8gaa0x8.webp";
 import SportsSection from "../components/features/Home/SportsSection";
-import footballImg from "../assets/football.svg";
-import tenesImg from "../assets/tenes.svg";
-import runImg from "../assets/run.svg";
-import GymImg from "../assets/gem.svg";
-import basketBallImg from "../assets/basctball.svg";
+import footballImg from "../assets/football.webp";
+import tenesImg from "../assets/tenes.webp";
+import runImg from "../assets/run.webp";
+import GymImg from "../assets/gem.webp";
+import basketBallImg from "../assets/basctball.webp";
 import type {  SportSectionProp } from "../types/HomeTypes/HomeBanner";
 function HomePage() {
   const SportSection: SportSectionProp[] = [
