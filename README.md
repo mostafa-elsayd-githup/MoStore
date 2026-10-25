@@ -20,7 +20,7 @@
 
 ## 🌟 About The Project
 
-This is a modern, high-performance **Luxury E-Commerce Single Page Application (SPA)** designed for seamless product discovery and shopping. Built with a strong focus on clean architecture, performance optimization, and localized Arabic user experience (RTL layout).
+This is a modern, high-performance **MoStore E-Commerce Single Page Application (SPA)** designed for seamless product discovery and shopping. Built with a strong focus on clean architecture, performance optimization, and localized Arabic user experience (RTL layout).
 
 ## ✨ Key Features
 
