@@ -2,8 +2,13 @@ import { useMutation } from "@tanstack/react-query";
 import { checkoutForm } from "../services/CheckoutForm";
 import type { CheckoutFormData } from "../types/CheckoutTypes/FormTypesInput";
 import { useTotalPrice } from "./useCheckoutCalcTotalPrice";
-import { toast } from "sonner";
+import {
+  successToastMessage,
+  errorToastMessage,
+} from "../utils/ShowToastMessage";
 import { ERROR_MESSAGES_MAP } from "../utils/apiErrorHandler";
+import { Handbag, X } from "lucide-react";
+import { createElement } from "react";
 export const useSumbitForm = () => {
   const { totalPrice, totalQuantity, item } = useTotalPrice();
 
@@ -28,9 +33,10 @@ export const useSumbitForm = () => {
       });
     },
     onSuccess: () => {
-      toast.success("تمت عمليه الشراء بنجاح", {
-        duration: 4000,
-      });
+      successToastMessage(
+        "تمت عمليه الشراء بنجاح",
+        createElement(Handbag, { size: 20 }),
+      );
     },
     onError: (err: any) => {
       const statusCode = err.response?.status;
@@ -38,9 +44,7 @@ export const useSumbitForm = () => {
         (statusCode && ERROR_MESSAGES_MAP[statusCode]) ||
         err.message ||
         "حدث خطأ غير متوقع، يرجى المحاولة مرة أخرى";
-      toast.error(errorMessage, {
-        duration: 4000,
-      });
+      errorToastMessage(errorMessage, createElement(X, { size: 20 }));
     },
   });
   return { submitOrder: mutate, isPending, isError, error };

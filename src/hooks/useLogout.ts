@@ -2,7 +2,12 @@ import { useMutation } from "@tanstack/react-query";
 import { logoutApi } from "../services/LogoutButton";
 import { useCartStore } from "../store/cardStore";
 import { useNavigate } from "react-router";
-import { toast } from "sonner";
+import { LogOut} from "lucide-react";
+import {
+  successToastMessage,
+  errorToastMessage,
+} from "../utils/ShowToastMessage";
+import { createElement } from "react";
 
 export const useLogout = () => {
   const navigate = useNavigate();
@@ -12,13 +17,19 @@ export const useLogout = () => {
     onSuccess: () => {
       localStorage.removeItem("sb-access-token");
       clearAll();
-      toast.success("تم تسجيل الخروج بنجاح");
+      successToastMessage(
+        "تم تسجيل الخروج بنجاح",
+        createElement(LogOut, { size: 20 }),
+      );
       navigate("/login");
     },
     onError: () => {
       localStorage.removeItem("sb-access-token");
       clearAll();
-      toast.info("تم تسجيل خروجك من الجهاز");
+      errorToastMessage(
+        "تم تسجيل خروجك من الجهاز",
+        createElement(LogOut, { size: 20 }),
+      );
       navigate("/login");
     },
   });

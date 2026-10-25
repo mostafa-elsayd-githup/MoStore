@@ -7,7 +7,10 @@ import type {
 } from "../../../types/ProductsType/Product";
 import { Link } from "react-router";
 import { useWishlistStore } from "../../../store/WishlistStore";
-import { toast } from "sonner";
+import {
+  errorToastMessage,
+  successToastMessage,
+} from "../../../utils/ShowToastMessage";
 
 function ProductCard({ item }: { item: ProductCardItem }) {
   const product: BaseProduct = {
@@ -33,15 +36,15 @@ function ProductCard({ item }: { item: ProductCardItem }) {
   const handleAdd = () => {
     const result = AddToWishlistItrem(product);
     if (result === "added") {
-      toast.success(`تمت إضافة "${product.title}" إلى المفضلة`, {
-        icon: <Heart size={20} className="text-red-500 fill-red-500" />,
-        duration: 3000,
-      });
+      successToastMessage(
+        `تمت إضافه إلى المفضلة`,
+        <Heart size={20} className="text-red-500 fill-red-500" />,
+      );
     } else if (result === "removed") {
-      toast.error(`تمت إزالة "${product.title}" من المفضلة `, {
-        icon: <X size={20} />,
-        duration: 3000,
-      });
+      errorToastMessage(
+        `تمت إزالة  من المفضلة `,
+        <X size={20} />,
+      );
     }
   };
   return (
