@@ -98,7 +98,7 @@ export default function AboutPage() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-(--border-color) bg-(--bg-card) aspect-video flex items-center justify-center">
               <video
                 src="/src/assets/8813018-sd_960_540_25fps.mp4"
-                poster="/src/assets/poster.svg"
+                poster="/src/assets/poster.webp"
                 autoPlay
                 loop
                 muted
