@@ -19,6 +19,7 @@ function NavBar() {
   const CartLength = useCartStore((state) => state.cart);
   const [isOpen, setisOPen] = useState<boolean>(false);
   const ToggleMenu = () => setisOPen(!isOpen);
+  const isLogin = localStorage.getItem("sb-access-token");
 
   return (
     <>
@@ -104,7 +105,7 @@ function NavBar() {
               </NavLink>
             </div>
             <ThemeButton />
-            <LogoutButton />
+            {isLogin && <LogoutButton />}
           </div>
         </div>
       </section>
@@ -147,14 +148,37 @@ function NavBar() {
               />
             </div>
             <div className="flex items-center gap-3 text-(--color-primary)">
-              <NavLink to="/cart">
+              <NavLink
+                className={({ isActive }) =>
+                  `relative hover:opacity-80 transition-opacity ${isActive ? "bg-(--bg-searchinput) font-bold text-(--text-h)" : "text-(--text-normal)"}`
+                }
+                to="/cart"
+                onClick={ToggleMenu}
+              >
+                {CartLength.length > 0 ? (
+                  <span className="absolute flex items-center justify-center bg-(--bg-badge)  text-(--color-main) w-4 h-4 rounded-full  text-sm -right-2 -top-2 animate-bounce">
+                    {CartLength.length}
+                  </span>
+                ) : null}
                 <ShoppingBag size={20} />
               </NavLink>
-              <NavLink to="/wishlist">
+              <NavLink
+                className={({ isActive }) =>
+                  `relative hover:opacity-80 transition-opacity ${isActive ? "bg-(--bg-searchinput) font-bold text-(--text-h)" : "text-(--text-normal)"}`
+                }
+                to="/wishlist"
+                onClick={ToggleMenu}
+              >
+                {WishlistLength.length > 0 ? (
+                  <span className="absolute flex  items-center justify-center bg-(--bg-badge)  text-(--color-main) w-4 h-4 rounded-full  text-sm -right-2 -top-2 animate-bounce z-10">
+                    {WishlistLength.length}
+                  </span>
+                ) : null}
+
                 <Heart size={20} />
               </NavLink>
               <ThemeButton />
-              <LogoutButton />
+              {isLogin && <LogoutButton />}
             </div>
           </div>
         </div>
