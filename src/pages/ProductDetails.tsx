@@ -30,6 +30,8 @@ import {
   errorToastMessage,
   successToastMessage,
 } from "../utils/ShowToastMessage";
+import { motion, type Variants } from "framer-motion";
+import { slideInRight, slideInLeft } from "../animations/variants";
 const perks = [
   { icon: Truck, title: "Free Delivery", text: "On orders over EGP 999" },
   {
@@ -139,17 +141,14 @@ export default function ProductPage() {
   };
   const handleAddtoWishlist = (product: AddToWishlist) => {
     const result = toggleWishlist(product);
- if (result === "added") {
-    successToastMessage(
-      `تم اضافه الى المفضله`,
-      <Heart size={20} className="fill-(--color-sale) text-(--color-sale)" />,
-    );
-  } else if (result === "removed") {
-    errorToastMessage(
-      `تم ازاله من المفضله`,
-      <X size={20} />,
-    );
-  }
+    if (result === "added") {
+      successToastMessage(
+        `تم اضافه الى المفضله`,
+        <Heart size={20} className="fill-(--color-sale) text-(--color-sale)" />,
+      );
+    } else if (result === "removed") {
+      errorToastMessage(`تم ازاله من المفضله`, <X size={20} />);
+    }
   };
   const wishlistProduct: AddToWishlist = {
     ...product,
@@ -198,7 +197,13 @@ export default function ProductPage() {
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-14 items-start">
-          <div className="flex flex-col-reverse sm:flex-row gap-4">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={slideInRight as Variants}
+            viewport={{ once: true }}
+            className="flex flex-col-reverse sm:flex-row gap-4"
+          >
             <div className="flex sm:flex-col gap-3 sm:w-20 shrink-0">
               {product.image.map((src, i) => {
                 const isVideo = src?.endsWith(".mp4") || src?.endsWith("video");
@@ -273,8 +278,14 @@ export default function ProductPage() {
                 />
               )}
             </div>
-          </div>
-          <div className="flex flex-col gap-6 lg:sticky lg:top-24 text-start">
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={slideInLeft as Variants}
+            viewport={{ once: true }}
+            className="flex flex-col gap-6 lg:sticky lg:top-24 text-start"
+          >
             <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <span className="rounded-full border border-(--border_card) bg-(--bg-card) px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-(--color-secondary)">
@@ -524,7 +535,7 @@ export default function ProductPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
       <div className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-3 border-t border-(--border_card) bg-(--bg-navbar)/90 px-4 py-3 backdrop-blur-xl lg:hidden">
