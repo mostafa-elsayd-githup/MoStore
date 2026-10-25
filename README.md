@@ -35,8 +35,9 @@ This is a modern, high-performance **Luxury E-Commerce Single Page Application (
 ## 🛠️ Tech Stack
 
 - **Frontend:** React, Vite, TypeScript/JavaScript
-- **Styling:** Tailwind CSS, CSS Custom Properties
-- **State & Data Fetching:** TanStack Query (React Query), Zustand
+- **Styling & UI Components:** Tailwind CSS, CSS Custom Properties, Swiper (for interactive carousels)
+- **State & Data Management:** TanStack Query (React Query), Zustand, Axios
+- **Form Handling & Validation:** React Hook Form, Zod
 - **Animations:** Framer Motion
 - **Backend & Database:** Supabase (PostgREST)
 - **Icons:** Lucide React
