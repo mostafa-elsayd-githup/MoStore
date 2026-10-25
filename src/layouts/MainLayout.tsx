@@ -1,5 +1,5 @@
 import { Outlet, ScrollRestoration } from "react-router";
-import NavBar from "../components/common/NavBar";
+import NavBar from "../components/common/Navbar/NavBar";
 import Footer from "../components/common/Footer";
 import DiscountComponent from "../components/common/DiscountComponent";
 import { useWelcomeMessage } from "../hooks/useRegister";

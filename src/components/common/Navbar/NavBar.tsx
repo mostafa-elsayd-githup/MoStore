@@ -1,13 +1,14 @@
 import { NavLink } from "react-router";
-import { ShoppingBag, Heart, Search, Menu, X } from "lucide-react";
-import Logo from "../ui/logo";
-import ThemeButton from "../features/Theme/ThemeButton";
-import type { RoutsList } from "../../types/NavBarType/RoutsNavType";
+import { ShoppingBag, Heart, Menu, X } from "lucide-react";
+import Logo from "../../ui/logo";
+import ThemeButton from "../../features/Theme/ThemeButton";
+import type { RoutsList } from "../../../types/NavBarType/RoutsNavType";
 import { useState } from "react";
-import { useWishlistStore } from "../../store/WishlistStore";
-import { useCartStore } from "../../store/cardStore";
-import LogoutButton from "../ui/logoutButton";
+import { useWishlistStore } from "../../../store/WishlistStore";
+import { useCartStore } from "../../../store/cardStore";
+import LogoutButton from "../../ui/logoutButton";
 import { motion } from "framer-motion";
+import SearchInput from "./SearchInput";
 
 function NavBar() {
   const Route: RoutsList[] = [
@@ -61,17 +62,7 @@ function NavBar() {
         </ul>
 
         <div className="flex-1 flex items-center justify-center gap-3">
-          <div className="relative flex items-center">
-            <input
-              type="text"
-              placeholder="Search..."
-              className=" outline-0 bg-(--bg-searchinput) py-1.5 pr-9 pl-3 text-sm text-(--color-secondary) rounded-2xl focus:shadow-(--shadow) transition-all placeholder:tracking-[1px] md:w-45 focus:w-60"
-            />
-            <Search
-              size={18}
-              className="absolute right-3 text-(--color-secondary)"
-            />
-          </div>
+          <SearchInput />
 
           <div className="flex items-center gap-2 text-(--color-primary) mr-1">
             <NavLink
@@ -136,17 +127,8 @@ function NavBar() {
           </ul>
 
           <div className="relative flex items-center gap-3 mt-3 pt-3 border-t border-white/10">
-            <div className="relative flex-1">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="outline-0 w-full bg-(--bg-searchinput) py-1.5 pr-9 pl-3 text-sm text-(--color-secondary) rounded-2xl focus:shadow-(--shadow) transition-all"
-              />
-              <Search
-                size={18}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-(--color-secondary)"
-              />
-            </div>
+            <SearchInput />
+
             <div className="flex items-center gap-3 text-(--color-primary)">
               <NavLink
                 className={({ isActive }) =>
