@@ -206,9 +206,9 @@ export default function CheckoutForm() {
           </span>
         </div>
         <button
-        disabled={isPending}
+          disabled={isPending}
           type="submit"
-          className="w-full bg-(--color-primary) text-(--bg-main) font-bold py-4 rounded-xl shadow-lg hover:opacity-95 active:scale-[0.99] transition-all cursor-pointer"
+          className="flex flex-item justify-center w-full m-auto bg-(--color-primary) text-(--bg-main) font-bold py-3 rounded-xl shadow-lg hover:opacity-95 active:scale-[0.99] transition-all cursor-pointer"
         >
           {isPending ? (
             <span className="animate-spin">
