@@ -11,8 +11,9 @@ import {
   ChevronDown,
   Share2,
   Check,
-  ShoppingBag,
   X,
+  ShoppingCart,
+  ShoppingCartPlus,
 } from "lucide-react";
 import { DiscountCalc, formatCurrency } from "../utils/formatters";
 import { useParams } from "react-router";
@@ -23,9 +24,12 @@ import type { AddToWishlist } from "../types/storeType/WishlistType";
 import ProductSkeleton from "../components/common/Skeletons/DynamicFile";
 import { useCartStore } from "../store/cardStore";
 import type { cartType } from "../types/storeType/CardType";
-import { toast } from "sonner";
 import type { ProductDetailsType } from "../types/ProductsType/productDetails";
 import NoFoundProducts from "../components/common/NotFoundproduct";
+import {
+  errorToastMessage,
+  successToastMessage,
+} from "../utils/ShowToastMessage";
 const perks = [
   { icon: Truck, title: "Free Delivery", text: "On orders over EGP 999" },
   {
@@ -42,7 +46,7 @@ const perks = [
 
 export default function ProductPage() {
   const { id } = useParams<{ id: string }>();
-  const { data, isPending } = useQuery({
+  const { data, isError, isPending } = useQuery({
     queryKey: [`produstdetails`, id],
     queryFn: async ({ signal }) => {
       if (!id) {
@@ -113,19 +117,16 @@ export default function ProductPage() {
     }
     setShowError(false);
     const result = addToCard(CardProduct);
-
     if (result === "added") {
-      toast.success(
-        `تمت اضافه ( ${product.title} ) بنجاح إلى حقيبة التسوق ! 🛍️`,
-        {
-          icon: <ShoppingBag size={20} />,
-          duration: 4000,
-        },
+      successToastMessage(
+        `تمت إضافة المنتج إلى حقيبة التسوق`,
+        <ShoppingCart size={20} />,
       );
     } else if (result === "incremented") {
-      toast.info("المنتج موجود مسبقاً بالسلة، وتم زيادة الكميه ( +1 )", {
-        duration: 4000,
-      });
+      successToastMessage(
+        `تم تحديث الكمية بنجاح (+1 في السلة)`,
+        <ShoppingCartPlus size={20} />,
+      );
     }
   };
   const ToggleSize = ({ label }: { label: string }) => {
@@ -138,20 +139,17 @@ export default function ProductPage() {
   };
   const handleAddtoWishlist = (product: AddToWishlist) => {
     const result = toggleWishlist(product);
-    if (result === "added") {
-      toast.success(
-        `تمت الإضافة ( ${product.title} ) بنجاح إلى قائمه المفضله !`,
-        {
-          icon: <ShoppingBag size={20} />,
-          duration: 5000,
-        },
-      );
-    } else if (result === "removed") {
-      toast.info(`تمت ازاله ( ${product.title} ) من قائمه المفضله !`, {
-        icon: <X size={20} />,
-        duration: 5000,
-      });
-    }
+ if (result === "added") {
+    successToastMessage(
+      `تم اضافه الى المفضله`,
+      <Heart size={20} className="fill-(--color-sale) text-(--color-sale)" />,
+    );
+  } else if (result === "removed") {
+    errorToastMessage(
+      `تم ازاله من المفضله`,
+      <X size={20} />,
+    );
+  }
   };
   const wishlistProduct: AddToWishlist = {
     ...product,
@@ -162,12 +160,15 @@ export default function ProductPage() {
     oldprice: product.oldPrice,
     video: "",
   };
-  if (!data) {
+
+  if (isPending) {
+    return <ProductSkeleton />;
+  }
+  if (isError) {
     return <NoFoundProducts />;
   }
   return (
     <section className="relative isolate overflow-hidden bg-(--bg-main) text-(--text-h)">
-      {isPending && <ProductSkeleton />}
       <div
         aria-hidden
         className={`pointer-events-none absolute -top-40 -inset-s-40 -z-10 h-130 w-130 rounded-full blur-3xl `}
@@ -181,7 +182,6 @@ export default function ProductPage() {
               : `bg-[radial-gradient(circle,color-mix(in_srgb,var(--nav-line-glow)_35%,transparent),transparent_70%)]`
           }`}
       />
-
       <div className="container mx-auto px-4 py-8 pb-28 lg:pb-12">
         <nav className="mb-6 flex items-center gap-2 text-xs text-(--text-normal)">
           <span className="hover:text-(--text-h) cursor-pointer transition-colors">

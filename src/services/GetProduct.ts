@@ -14,6 +14,9 @@ export const GetProductById_productDetils = async ({
   productId,
   signal,
 }: propType): Promise<ProductTypeProp> => {
-  const req = await api.get(`${table}?select=*&id=eq.${productId}`, { signal }); 
+  const req = await api.get(`${table}?select=*&id=eq.${productId}`, { signal });
+  if (!req.data || req.data.length === 0) {
+    throw new Error(); 
+  }
   return req.data[0];
 };
