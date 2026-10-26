@@ -10,7 +10,7 @@ export default function AuthLayout() {
         playsInline
         preload="auto"
         className="absolute inset-0 w-full h-full object-cover -z-10"
-        src="/src/assets/13437044_1280_720_25fps.mp4"
+        src="/public/13437044_1280_720_25fps.mp4"
         poster="/src/assets/poster.svg"
       ></video>
       <span className="absolute inset-0 bg-black/50 -z-10" />

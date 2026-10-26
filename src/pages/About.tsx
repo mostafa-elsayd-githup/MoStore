@@ -97,7 +97,7 @@ export default function AboutPage() {
             <div className="absolute -inset-1.5 bg-linear-to-r from-(--bg-badge) to-(--nav-link-color) rounded-3xl blur-lg opacity-30 animate-pulse"></div>
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-(--border-color) bg-(--bg-card) aspect-video flex items-center justify-center">
               <video
-                src="/src/assets/8813018-sd_960_540_25fps.mp4"
+                src="/public/8813018-sd_960_540_25fps.mp4"
                 poster="/src/assets/poster.webp"
                 autoPlay
                 loop
