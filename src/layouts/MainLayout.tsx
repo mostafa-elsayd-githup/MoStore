@@ -3,6 +3,7 @@ import NavBar from "../components/common/Navbar/NavBar";
 import Footer from "../components/common/Footer";
 import DiscountComponent from "../components/common/DiscountComponent";
 import { useWelcomeMessage } from "../hooks/useRegister";
+import FeedBack from "../components/common/FeedBack";
 
 function MainLayout() {
   useWelcomeMessage();
@@ -16,6 +17,7 @@ function MainLayout() {
       </header>
 
       <main className="flex-1 pt-24 bg-(--bg-main)">
+        <FeedBack />
         <Outlet />
       </main>
       <DiscountComponent />
