@@ -18,7 +18,7 @@ function CartComponent() {
       <EmptyList
         namePage="عربة التسوق"
         pageIcon={
-          <ShoppingBag className="text-white w-25 h-25 p-2 rounded-full bg-linear-to-r from-(--color-main) via-( --bg-searchinput) to-(--text-footer) to-60% animate-pulse" />
+          <ShoppingBag className="text-(--color-main) w-25 h-20 p-2 rounded-3xl bg-(--loader-spinner)" />
         }
       />
     );
