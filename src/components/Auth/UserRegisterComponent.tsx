@@ -16,7 +16,7 @@ function UserRegisterComponent() {
     registerUser(data);
   };
   return (
-    <div className="relative z-10 w-full max-w-md p-8 bg-(--bg-glassy) backdrop-blur-md rounded-2xl shadow-2xl border border-[#b3b2ae4b]">
+    <div className="relative mx-2 w-full max-w-md p-8 bg-(--bg-glassy) backdrop-blur-md rounded-2xl shadow-2xl border border-[#b3b2ae4b]">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="text-start">
           <label className="block text-sm font-medium text-white mb-1">
@@ -26,7 +26,7 @@ function UserRegisterComponent() {
             type="text"
             {...register("fullName")}
             placeholder="مصطفى السيد"
-            className={`w-full bg-white/10 placeholder:text-[#777] text-white border ${
+            className={`w-full bg-white/10 text-white border ${
               errors.fullName ? "border-red-500" : "border-[#b3b2ae4b]"
             } rounded-xl px-4 py-2 focus:outline-none transition-all mb-2`}
           />
@@ -42,7 +42,7 @@ function UserRegisterComponent() {
             type="email"
             {...register("email")}
             placeholder="mo@example.com"
-            className={`w-full bg-white/10 placeholder:text-[#777] text-white border ${
+            className={`w-full bg-white/10  text-white border ${
               errors.email ? "border-red-500" : "border-[#b3b2ae4b]"
             } rounded-xl px-4 py-2 focus:outline-none transition-all mb-2`}
           />
@@ -58,7 +58,7 @@ function UserRegisterComponent() {
             type="tel"
             {...register("phone")}
             placeholder="01000000000"
-            className={`w-full bg-white/10 placeholder:text-[#777] text-white border ${
+            className={`w-full bg-white/10 text-white border ${
               errors.phone ? "border-red-500" : "border-[#b3b2ae4b]"
             } rounded-xl px-4 py-2 focus:outline-none transition-all mb-2`}
           />
@@ -74,7 +74,7 @@ function UserRegisterComponent() {
             type="password"
             {...register("password")}
             placeholder="**********"
-            className={`w-full bg-white/10 placeholder:text-[#777] text-white border ${
+            className={`w-full bg-white/10 text-white border ${
               errors.password ? "border-red-500" : "border-[#b3b2ae4b]"
             } rounded-xl px-4 py-2 focus:outline-none transition-all mb-2`}
           />
@@ -90,7 +90,7 @@ function UserRegisterComponent() {
             type="password"
             {...register("confirmPassword")}
             placeholder="**********"
-            className={`w-full bg-white/10 placeholder:text-[#777] text-white border ${
+            className={`w-full bg-white/10 text-white border ${
               errors.confirmPassword ? "border-red-500" : "border-[#b3b2ae4b]"
             } rounded-xl px-4 py-2 focus:outline-none transition-all mb-2`}
           />

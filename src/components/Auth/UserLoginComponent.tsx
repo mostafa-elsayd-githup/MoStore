@@ -16,7 +16,7 @@ function UserLoginComponent() {
     registerUser(dataForm);
   };
   return (
-    <div className="relative z-10 w-full max-w-md p-8 bg-(--bg-glassy) backdrop-blur-md rounded-2xl shadow-2xl border border-[#b3b2ae4b]">
+    <div className="relative mx-2 w-full max-w-md p-8 bg-(--bg-glassy) backdrop-blur-md rounded-2xl shadow-2xl border border-[#b3b2ae4b]">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="text-start mb-4">
           <label className="block text-sm font-medium text-white mb-1">
@@ -26,7 +26,7 @@ function UserLoginComponent() {
             type="email"
             {...register("email")}
             placeholder="mo@example.com"
-            className="w-full bg-white/10 placeholder:text-[#777] border border-[#b3b2ae4b] rounded-xl px-4 py-2 text-white focus:outline-none transition-all mb-1"
+            className="w-full bg-white/10 border border-[#b3b2ae4b] rounded-xl px-4 py-2 text-white focus:outline-none transition-all mb-1"
           />
           {errors.email && (
             <p className="text-red-400 text-xs">{errors.email.message}</p>
@@ -40,7 +40,7 @@ function UserLoginComponent() {
             type="password"
             {...register("password")}
             placeholder="**********"
-            className="w-full bg-white/10 placeholder:text-[#777] border border-[#b3b2ae4b] rounded-xl px-4 py-2 text-white focus:outline-none transition-all mb-1"
+            className="w-full bg-white/10 border border-[#b3b2ae4b] rounded-xl px-4 py-2 text-white focus:outline-none transition-all mb-1"
           />
           {errors.password && (
             <p className="text-red-400 text-xs">{errors.password.message}</p>
