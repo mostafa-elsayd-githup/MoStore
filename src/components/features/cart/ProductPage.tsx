@@ -44,14 +44,12 @@ function ProductPage() {
         whileInView="visible"
         variants={slideInRight as Variants}
         viewport={{ once: true }}
-        className="flex items-baseline gap-3"
+        className=" items-end justify-center text-sm lg:text-3xl sm:justify-start mr-4 "
       >
-        <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-(--text-h)">
-          {pageTitle.join(" ")}
+        <h1 className="m-0! mt-10! font-black tracking-tight text-(--text-h)">
+          {pageTitle.join(" ")}{" "}
+          <span className="text-sm font-semibold text-(--color-secondary) bg-(--border_card)/50 px-3 py-0.5 rounded-2xl" dir="ltr">( {data?.length || 0} )</span>
         </h1>
-        <span className="text-sm font-semibold text-(--color-secondary) bg-(--border_card)/50 px-3 py-1 rounded-full">
-          ({data?.length || 0})
-        </span>
       </motion.div>
       {isPending && <ProductSkeleton />}
       {data && data?.length === 0 && <NoProductsFound />}
