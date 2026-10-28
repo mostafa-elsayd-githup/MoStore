@@ -22,14 +22,14 @@ function SearchInput() {
     enabled: !!debouncedSearchText && debouncedSearchText.trim().length > 0,
   });
   return (
-    <div className="relative">
+    <div className="relative w-full focus:w-56">
       <div className="relative flex items-center">
         <input
           type="text"
           placeholder="بحث عن منتج ......"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          className="outline-0 bg-(--bg-searchinput) py-1.5 pr-9 pl-3 text-sm text-(--color-secondary) rounded-2xl focus:shadow-(--shadow) transition-all placeholder:tracking-[1px] md:w-40 focus:w-56"
+          className="w-full outline-0 bg-(--bg-searchinput) py-1.5 pr-9 pl-3 text-sm text-(--color-secondary) rounded-2xl focus:shadow-(--shadow) transition-all placeholder:tracking-[1px] "
         />
         <Search
           size={18}
@@ -37,7 +37,7 @@ function SearchInput() {
         />
       </div>
       {debouncedSearchText && debouncedSearchText.trim().length > 0 && (
-        <div className="absolute top-full right-0 left-0 mt-2 bg-(--bg-card) border border-(--border-color) rounded-2xl shadow-(--shadow) overflow-hidden z-50 max-h-80 overflow-y-auto">
+        <div className="absolute top-14 right-0 left-0 mt-2 bg-(--bg-card) border border-(--border-color) rounded-2xl shadow-(--shadow) overflow-hidden z-50 max-h-80 overflow-y-auto">
           {isPending && (
             <div className="flex items-center justify-center py-6 text-(--color-secondary) gap-2">
               <Loader2 className="animate-spin" size={20} />

@@ -25,7 +25,7 @@ function NavBar() {
   return (
     <>
       <section className="hidden md:flex items-center justify-between px-6 py-2.5 bg-(--bg-navbar) backdrop-blur-md shadow-(--shadow-navbar) rounded-4xl w-full  border border-(--border-color)">
-        <div className="flex-1 ">
+        <div className="lg:flex-1 md:mx-2">
           <Logo />
         </div>
 
@@ -35,7 +35,7 @@ function NavBar() {
               <NavLink
                 to={item.path}
                 className={({ isActive }) =>
-                  `relative px-4 py-2 rounded-full transition-all   duration-300 ${
+                  `relative px-2.5 py-1 rounded-full transition-all   duration-300 ${
                     isActive && "text-(--color-main)  font-bold"
                   }`
                 }
@@ -102,11 +102,9 @@ function NavBar() {
       </section>
 
       <section className="flex md:hidden relative items-center justify-between px-5 py-3 bg-(--bg-navbar) backdrop-blur-md rounded-2xl shadow-md w-full border border-white/10">
-        <div>
           <Logo />
-        </div>
         <div
-          className={`p-4 w-full absolute left-0 top-full mt-2 rounded-2xl text-[18px] text-(--text-h) bg-(--bg-navbar) transition-all duration-200 ease-in-out origin-top overflow-hidden z-50 shadow-xl border border-white/10 ${
+          className={`p-4 w-full absolute left-0 top-full mt-2 rounded-2xl text-[18px] text-(--text-h) bg-(--bg-navbar) transition-all duration-200 ease-in-out origin-top  z-50 shadow-xl border border-white/10 ${
             isOpen
               ? "max-h-96 opacity-100 translate-y-0 pointer-events-auto"
               : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"
@@ -126,10 +124,10 @@ function NavBar() {
             ))}
           </ul>
 
-          <div className="relative flex items-center gap-3 mt-3 pt-3 border-t border-white/10">
+          <div className="relative flex items-center flex-wrap sm:flex-nowrap gap-3 mt-3 pt-3 border-t border-white/10">
             <SearchInput />
 
-            <div className="flex items-center gap-3 text-(--color-primary)">
+            <div className="flex flex-1 items-center gap-3 text-(--color-primary)">
               <NavLink
                 className={({ isActive }) =>
                   `relative hover:opacity-80 transition-opacity ${isActive ? "bg-(--bg-searchinput) font-bold text-(--text-h)" : "text-(--text-normal)"}`
