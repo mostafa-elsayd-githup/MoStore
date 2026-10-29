@@ -1,3 +1,5 @@
+import type { Variants } from "framer-motion";
+
 export const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: {
@@ -38,4 +40,16 @@ export const scaleDown = {
     y: 0,
     transition: { duration: 0.5, ease: "easeOut" },
   },
+};
+
+export const hoverScale: Variants = {
+  initial: { scale: 1 },
+  hover: { 
+    scale: 1.05,
+    transition: { type: "spring", stiffness: 500, damping: 17 }
+  },
+  tap: { 
+    scale: 0.9,
+    transition: { type: "spring", stiffness: 500, damping: 17 }
+  }
 };
