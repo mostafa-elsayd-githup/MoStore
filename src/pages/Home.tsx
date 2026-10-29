@@ -1,6 +1,6 @@
 import HeroSection from "../components/features/Home/Banner";
 import HeroForDeskTop from "../../public/backgroud-hero_section.webp";
-import HeroForMobile from "../../public/backgroud-hero_section.webp";
+import HeroForMobile from "../../public/backgroud-hero_section_for_moblie.webp";
 import sportImgMobile from "../assets/Gemini_Generated_Image_4tmmaw4tmmaw4tmm.webp";
 import sportImgDeskTop from "../assets/Gemini_Generated_Image_a0x8gaa0x8gaa0x8.webp";
 import SportsSection from "../components/features/Home/SportsSection";
