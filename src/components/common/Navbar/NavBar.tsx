@@ -29,13 +29,13 @@ function NavBar() {
           <Logo />
         </div>
 
-        <ul className="lg:flex-1 flex items-center justify-around gap-2 text-[17px] text-(--text-h)">
+        <ul className="lg:flex-1 flex items-center justify-around gap-2 text-[17px] text-(--text-h) md:ml-1">
           {Route.map((item) => (
             <li key={item.id}>
               <NavLink
                 to={item.path}
                 className={({ isActive }) =>
-                  `relative px-2.5 py-1 rounded-full transition-all   duration-300 ${
+                  `relative px-2.5 rounded-full transition-all   duration-300 ${
                     isActive && "text-white  font-bold"
                   }`
                 }

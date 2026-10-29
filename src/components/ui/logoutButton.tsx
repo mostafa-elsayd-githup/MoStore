@@ -18,7 +18,7 @@ export default function LogoutButton() {
       variants={hoverScale}
       onClick={handleLogout}
       disabled={isPending}
-      className="px-4 py-2 h-10 bg-(--bg-feedback) text-white rounded-2xl cursor-pointer flex items-center justify-center shadow-md text-sm md:text-base font-medium whitespace-nowrap disabled:opacity-50"
+      className="px-4 h-9 bg-(--bg-feedback) text-white rounded-2xl cursor-pointer flex items-center justify-center shadow-md text-sm md:text-base font-medium whitespace-nowrap disabled:opacity-50"
     >
       {isPending ? (
         <span className="animate-spin flex items-center justify-center">
