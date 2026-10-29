@@ -16,7 +16,7 @@ import {
   ShoppingCartPlus,
 } from "lucide-react";
 import { DiscountCalc, formatCurrency } from "../utils/formatters";
-import { useParams } from "react-router";
+import { Link,useNavigate,useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { GetProductById_productDetils } from "../services/GetProduct";
 import { useWishlistStore } from "../store/WishlistStore";
@@ -47,6 +47,9 @@ const perks = [
 ];
 
 export default function ProductPage() {
+  const navigate= useNavigate()
+
+  
   const { id } = useParams<{ id: string }>();
   const { data, isError, isPending } = useQuery({
     queryKey: [`produstdetails`, id],
@@ -183,13 +186,13 @@ export default function ProductPage() {
       />
       <div className="container mx-auto px-4 py-8 pb-28 lg:pb-12">
         <nav className="mb-6 flex items-center gap-2 text-xs text-(--text-normal)">
-          <span className="hover:text-(--text-h) cursor-pointer transition-colors">
+          <Link to="/" className="hover:text-(--bg-feedback) cursor-pointer transition-colors">
             Home
-          </span>
+          </Link>
           <span>/</span>
-          <span className="hover:text-(--text-h) cursor-pointer transition-colors">
+          <button onClick={()=>navigate(-1)} className="hover:text-(--bg-feedback) cursor-pointer transition-colors">
             {product.type}
-          </span>
+          </button>
           <span>/</span>
           <span className="text-(--text-h) font-medium line-clamp-1">
             {product.title}
