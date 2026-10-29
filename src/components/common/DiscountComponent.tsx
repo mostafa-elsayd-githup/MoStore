@@ -9,7 +9,7 @@ function DiscountComponent() {
         whileInView="visible"
         variants={slideInRight as Variants}
         viewport={{ once: true }}
-        className="text-[25px] sm:text-[2.5rem]"
+        className="text-[25px] sm:text-[2rem] bg-linear-to-r from-(--text-h) to-(--bg-feedback) to-50% bg-clip-text text-transparent! font-bold"
       >
         انضم كعضو واحصل على خصم 10%
       </motion.h3>

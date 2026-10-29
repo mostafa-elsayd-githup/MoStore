@@ -538,6 +538,16 @@ export default function ProductPage() {
         </div>
       </div>
       <div className="fixed inset-x-0 bottom-0 z-50 flex items-center gap-3 border-t border-(--border_card) bg-(--bg-navbar)/90 px-4 py-3 backdrop-blur-xl lg:hidden">
+        <button
+          onClick={() => addToCard(CardProduct)}
+          className="group/btn relative flex flex-1 items-center justify-center gap-2 py-3 overflow-hidden rounded-2xl bg-(--bg-feedback)  text-sm font-bold uppercase tracking-wider text-white shadow-(--shado) transition-all hover:-translate-y-0.5 hover:shadow-(--shadow) active:translate-y-0 cursor-pointer"
+        >
+          <span className="relative">Add to bag</span>
+          <ArrowRight
+            size={18}
+            className="relative transition-transform group-hover/btn:translate-x-1 rtl:rotate-180 rtl:group-hover/btn:-translate-x-1"
+          />{" "}
+        </button>
         <div className="leading-tight">
           {product.oldPrice !== 0 ? (
             <>
@@ -554,16 +564,6 @@ export default function ProductPage() {
             </span>
           )}
         </div>
-        <button
-          onClick={() => addToCard(CardProduct)}
-          className="group/btn relative flex flex-1 items-center justify-center gap-2 py-3 overflow-hidden rounded-2xl bg-(--bg-feedback)  text-sm font-bold uppercase tracking-wider text-white shadow-(--shado) transition-all hover:-translate-y-0.5 hover:shadow-(--shadow) active:translate-y-0 cursor-pointer"
-        >
-          <span className="relative">Add to bag</span>
-          <ArrowRight
-            size={18}
-            className="relative transition-transform group-hover/btn:translate-x-1 rtl:rotate-180 rtl:group-hover/btn:-translate-x-1"
-          />{" "}
-        </button>
       </div>
     </section>
   );
