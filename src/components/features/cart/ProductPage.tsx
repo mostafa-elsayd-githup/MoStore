@@ -46,9 +46,14 @@ function ProductPage() {
         viewport={{ once: true }}
         className=" items-end justify-center text-sm lg:text-3xl sm:justify-start mr-4 "
       >
-        <h1 className="m-0! mt-10! font-black tracking-tight text-(--text-h)">
+        <h1 className="m-0! mt-10! text-[1.5rem]! font-black tracking-tight text-(--text-h)">
           {pageTitle.join(" ")}
-          <span className="text-sm inline-block font-semibold text-white bg-(--bg-feedback) px-3 py-0.5 mr-1 rounded-2xl" dir="ltr">( {data?.length || 0}  )</span>
+          <span
+            className="text-sm inline-block font-semibold text-white bg-(--bg-feedback) px-2 py-0.5 mr-1 rounded-2xl"
+            dir="ltr"
+          >
+            {data?.length || 0}
+          </span>
         </h1>
       </motion.div>
       {isPending && <ProductSkeleton />}
