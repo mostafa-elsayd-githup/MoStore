@@ -24,8 +24,8 @@ function NavBar() {
 
   return (
     <>
-      <section className="hidden md:flex items-center justify-between px-6 py-2.5 bg-(--bg-navbar) backdrop-blur-md shadow-(--shadow-navbar) rounded-4xl w-full  border border-(--border-color)">
-        <div className="lg:flex-1 md:mx-2">
+      <section className="hidden md:flex items-center justify-between px-6 py-2.5 bg-(--bg-glassy) backdrop-blur-md shadow-(--shadow-navbar) rounded-4xl w-full  border border-(--border-color)/30">
+        <div className="lg:flex-1">
           <Logo />
         </div>
 
@@ -36,7 +36,7 @@ function NavBar() {
                 to={item.path}
                 className={({ isActive }) =>
                   `relative px-2.5 py-1 rounded-full transition-all   duration-300 ${
-                    isActive && "text-(--color-main)  font-bold"
+                    isActive && "text-white  font-bold"
                   }`
                 }
               >
@@ -51,7 +51,7 @@ function NavBar() {
                           stiffness: 400,
                           damping: 35,
                         }}
-                        className="absolute inset-0 bg-(--bg-badge) rounded-full z-0 shadow-sm"
+                        className="absolute inset-0 bg-(--bg-feedback) rounded-full z-0 shadow-sm"
                       />
                     )}
                   </>
@@ -68,11 +68,11 @@ function NavBar() {
             <NavLink
               to="/cart"
               className={({ isActive }) =>
-                `relative hover:opacity-80 transition-opacity ${isActive ? "bg-(--bg-searchinput) font-bold text-(--text-h)" : "text-(--text-normal)"}`
+                `relative hover:opacity-80 transition-opacity ${isActive ? "text-(--bg-feedback) font-bold " : "text-(--text-normal)"}`
               }
             >
               {CartLength.length > 0 ? (
-                <span className="absolute flex items-center justify-center bg-(--bg-badge)  text-(--color-main) w-4 h-4 rounded-full  text-sm -right-2 -top-2 animate-bounce">
+                <span className="absolute flex items-center justify-center bg-(--bg-feedback) text-white w-4 h-4 rounded-full  text-sm -right-2 -top-2 animate-bounce">
                   {CartLength.length}
                 </span>
               ) : null}
@@ -83,11 +83,11 @@ function NavBar() {
               <NavLink
                 to="/wishlist"
                 className={({ isActive }) =>
-                  `relative hover:opacity-80 transition-opacity ${isActive ? "bg-(--bg-searchinput) font-bold text-(--text-h) " : "text-(--text-normal)"}`
+                  `relative hover:opacity-80 transition-opacity ${isActive ? "text-(--bg-feedback) font-bold " : "text-(--text-normal)"}`
                 }
               >
                 {WishlistLength.length > 0 ? (
-                  <span className="absolute flex  items-center justify-center bg-(--bg-badge)  text-(--color-main) w-4 h-4 rounded-full  text-sm -right-4 -top-2 animate-bounce z-10">
+                  <span className="absolute flex items-center justify-center bg-(--bg-feedback) text-white w-4 h-4 rounded-full  text-sm -right-4 -top-2 animate-bounce z-10">
                     {WishlistLength.length}
                   </span>
                 ) : null}
@@ -101,7 +101,7 @@ function NavBar() {
         </div>
       </section>
 
-      <section className="flex md:hidden relative items-center justify-between px-5 py-3 bg-(--bg-navbar) backdrop-blur-md rounded-2xl shadow-md w-full border border-white/10">
+      <section className="flex md:hidden relative items-center justify-between px-5 py-3 bg-(--bg-glassy)/90 backdrop-blur-md rounded-2xl shadow-md w-full border border-white/10">
           <Logo />
         <div
           className={`p-4 w-full absolute left-0 top-full mt-2 rounded-2xl text-[18px] text-(--text-h) bg-(--bg-navbar) transition-all duration-200 ease-in-out origin-top  z-50 shadow-xl border border-white/10 ${
@@ -114,7 +114,7 @@ function NavBar() {
             {Route.map((item) => (
               <li
                 onClick={() => setisOPen(false)}
-                className="mb-2 px-3 py-1.5 rounded-xl hover:bg-(--bg-searchinput) hover:text-(--text-h) transition-all cursor-pointer"
+                className="mb-2 px-3 py-1.5 rounded-xl hover:bg-(--bg-feedback) hover:text-(--text-h) transition-all cursor-pointer"
                 key={item.id}
               >
                 <NavLink className="w-full block" to={item.path}>
@@ -130,13 +130,13 @@ function NavBar() {
             <div className="flex flex-1 items-center gap-3 text-(--color-primary)">
               <NavLink
                 className={({ isActive }) =>
-                  `relative hover:opacity-80 transition-opacity ${isActive ? "bg-(--bg-searchinput) font-bold text-(--text-h)" : "text-(--text-normal)"}`
+                  `relative hover:opacity-80 transition-opacity ${isActive ? "text-(--bg-feedback) font-bold" : "text-(--text-normal)"}`
                 }
                 to="/cart"
                 onClick={ToggleMenu}
               >
                 {CartLength.length > 0 ? (
-                  <span className="absolute flex items-center justify-center bg-(--bg-badge)  text-(--color-main) w-4 h-4 rounded-full  text-sm -right-2 -top-2 animate-bounce">
+                  <span className="absolute flex items-center justify-center bg-(--bg-feedback) text-white w-4 h-4 rounded-full  text-sm -right-2 -top-2 animate-bounce">
                     {CartLength.length}
                   </span>
                 ) : null}
@@ -144,13 +144,13 @@ function NavBar() {
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
-                  `relative hover:opacity-80 transition-opacity ${isActive ? "bg-(--bg-searchinput) font-bold text-(--text-h)" : "text-(--text-normal)"}`
+                  `relative hover:opacity-80 transition-opacity ${isActive ? "text-(--bg-feedback) font-bold" : "text-(--text-normal)"}`
                 }
                 to="/wishlist"
                 onClick={ToggleMenu}
               >
                 {WishlistLength.length > 0 ? (
-                  <span className="absolute flex  items-center justify-center bg-(--bg-badge)  text-(--color-main) w-4 h-4 rounded-full  text-sm -right-2 -top-2 animate-bounce z-10">
+                  <span className="absolute flex  items-center justify-center bg-(--bg-feedback) text-white w-4 h-4 rounded-full  text-sm -right-2 -top-2 animate-bounce z-10">
                     {WishlistLength.length}
                   </span>
                 ) : null}

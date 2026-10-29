@@ -29,11 +29,11 @@ function SearchInput() {
           placeholder="بحث عن منتج ......"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          className="w-full outline-0 bg-(--bg-searchinput) py-1.5 pr-9 pl-3 text-sm text-(--color-secondary) rounded-2xl focus:shadow-(--shadow) transition-all placeholder:tracking-[1px] "
+          className="w-full outline-0 bg-(--bg-glassy) py-1.5 pr-9 pl-3 text-sm text-(--color-secondary) rounded-2xl focus:shadow-(--shadow) transition-all placeholder:tracking-[1px] placeholder:text-(--bg-feedback) border border-black/20"
         />
         <Search
           size={18}
-          className="absolute right-3 text-(--color-secondary)"
+          className="absolute right-3 text-(--bg-feedback)"
         />
       </div>
       {debouncedSearchText && debouncedSearchText.trim().length > 0 && (

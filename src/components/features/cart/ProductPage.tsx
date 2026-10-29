@@ -38,7 +38,7 @@ function ProductPage() {
   }
 
   return (
-    <section className="container m-auto text-start flex flex-col gap-10">
+    <section className="container m-auto text-start flex flex-col gap-10 ">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -47,13 +47,13 @@ function ProductPage() {
         className=" items-end justify-center text-sm lg:text-3xl sm:justify-start mr-4 "
       >
         <h1 className="m-0! mt-10! font-black tracking-tight text-(--text-h)">
-          {pageTitle.join(" ")}{" "}
-          <span className="text-sm font-semibold text-(--color-secondary) bg-(--border_card)/50 px-3 py-0.5 rounded-2xl" dir="ltr">( {data?.length || 0} )</span>
+          {pageTitle.join(" ")}
+          <span className="text-sm inline-block font-semibold text-white bg-(--bg-feedback) px-3 py-0.5 mr-1 rounded-2xl" dir="ltr">( {data?.length || 0}  )</span>
         </h1>
       </motion.div>
       {isPending && <ProductSkeleton />}
       {data && data?.length === 0 && <NoProductsFound />}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 px-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 px-2 m-auto">
         {data?.map((product, index) => {
           return (
             <motion.div

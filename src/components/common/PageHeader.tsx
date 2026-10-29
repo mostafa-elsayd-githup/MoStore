@@ -17,12 +17,12 @@ function PageHeader({ numberOfItems }: { numberOfItems: number }) {
       {title.map((item, index) => (
         <h1
           key={index}
-          className="text-3xl sm:text-4xl font-black tracking-tight text-(--text-h)"
+          className="text-2xl! sm:text-4xl! font-black tracking-tight text-(--text-h)"
         >
           {item}
         </h1>
       ))}
-      <span className="text-sm font-medium text-(--color-secondary) bg-(--border_card)/50 px-3 py-1 rounded-full">
+      <span className="text-sm font-medium text-white bg-(--bg-feedback) px-3 py-1 rounded-full">
         {numberOfItems} {numberOfItems === 1 ? "عنصر" : "عناصر"}
       </span>
     </motion.div>

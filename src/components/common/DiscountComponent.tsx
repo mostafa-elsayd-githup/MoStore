@@ -3,16 +3,16 @@ import { motion, type Variants } from "framer-motion";
 import { slideInRight, slideInLeft } from "../../animations/variants";
 function DiscountComponent() {
   return (
-    <div className="flex flex-col gap-5 items-center justify-center md:flex-row md:gap-25  bg-(--bg-dis) my-10 py-8">
-      <motion.h1
+    <div className="flex flex-col items-center justify-center lg:flex-row md:gap-5  bg-(--bg-dis) my-10 py-8">
+      <motion.h3
         initial="hidden"
         whileInView="visible"
         variants={slideInRight as Variants}
         viewport={{ once: true }}
-        className="text-5xl font-bold  "
+        className="text-[25px] sm:text-[2.5rem]"
       >
         انضم كعضو واحصل على خصم 10%
-      </motion.h1>
+      </motion.h3>
       <motion.div
         initial="hidden"
         whileInView="visible"

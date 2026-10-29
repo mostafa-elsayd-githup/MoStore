@@ -17,13 +17,12 @@ function SportsSection({
 }) {
   return (
     <section className="p-2 mt-5">
-      <motion.h1
+      <motion.h3
         variants={slideInRight as Variants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="flex items-start text-4xl font-bold text-(--text-h) mb-10  mr-4! hover:underline"
-      >
+        className="flex items-start underline text-xl sm:text-3xl mb-5 md:mr-3 font-bold text-(--text-h)  hover:no-underline">
         {sportSectionHeader.map((word, index) => (
           <span
             key={index}
@@ -32,7 +31,7 @@ function SportsSection({
             {word}
           </span>
         ))}
-      </motion.h1>
+      </motion.h3>
       <Swiper
         modules={[Autoplay, FreeMode]}
         spaceBetween={16}
@@ -53,7 +52,7 @@ function SportsSection({
               viewport={{ once: true }}
               variants={fadeInUp as Variants}
               style={{ backgroundImage: `url(${item.image})` }}
-              className="relative w-70 sm:w-84 md:w-91 min-h-157 shrink-0 bg-cover bg-center rounded-3xl shadow-md hover:scale-[1.02] transition-transform duration-300 select-none"
+              className="relative w-70 sm:w-84 md:w-91 h-100 shrink-0 bg-cover rounded-3xl shadow-md hover:scale-[1.02] transition-transform duration-300 select-none"
             >
               <span className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent rounded-3xl pointer-events-none" />
               <NavLink

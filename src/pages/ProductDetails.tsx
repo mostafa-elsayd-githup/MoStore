@@ -177,7 +177,7 @@ export default function ProductPage() {
         className={`pointer-events-none absolute top-1/3 -inset-e-48 -z-10 h-120 w-120 rounded-full blur-3xl  duration-400 transition-all
           ${
             isLiked
-              ? `bg-[radial-gradient(circle,color-mix(in_srgb,var(--color-sale)_22%,transparent),transparent_70%)]`
+              ? `bg-[radial-gradient(circle,color-mix(in_srgb,var(--bg-feedback)_22%,transparent),transparent_70%)]`
               : `bg-[radial-gradient(circle,color-mix(in_srgb,var(--nav-line-glow)_35%,transparent),transparent_70%)]`
           }`}
       />
@@ -250,7 +250,7 @@ export default function ProductPage() {
                     size={18}
                     className={
                       isLiked
-                        ? "fill-(--color-sale) text-(--color-sale)"
+                        ? "fill-(--bg-feedback) text-(--bg-feedback)"
                         : "text-(--text-h)"
                     }
                   />
@@ -296,7 +296,7 @@ export default function ProductPage() {
                 </span>
               </div>
 
-              <h1 className="text-2xl lg:text-4xl font-extrabold leading-tight tracking-tight">
+              <h1 className="text-sm! md:text-3xl! lg:text-4xl font-extrabold leading-tight tracking-tight bg-linear-to-rl text-(--bg-feedback)/90!">
                 {product.title}
               </h1>
 
@@ -308,7 +308,7 @@ export default function ProductPage() {
                       size={15}
                       className={
                         s <= Math.round(product.rating)
-                          ? "fill-(--rating-color) text-(--rating-color)"
+                          ? "fill-[#ffb900] text-[#ffb900]"
                           : "text-(--border-color)"
                       }
                     />
@@ -327,25 +327,25 @@ export default function ProductPage() {
                 className={`absolute -top-10 -inset-e-10 h-32 w-32 rounded-full blur-2xl duration-400 transition-all
                   ${
                     isLiked
-                      ? `bg-[color-mix(in_srgb,var(--color-sale)_25%,transparent)]`
+                      ? `bg-[color-mix(in_srgb,var(--bg-feedback)_25%,transparent)]`
                       : `bg-[radial-gradient(circle,color-mix(in_srgb,var(--nav-line-glow)_35%,transparent),transparent_70%)]`
                   }`}
               />
               <div className="relative flex flex-wrap items-end gap-3">
                 {product.oldPrice !== 0 ? (
                   <>
-                    <span className="text-3xl font-black bg-linear-to-r from-(--color-sale) to-[color-mix(in_srgb,var(--color-sale)_55%,var(--text-h))] bg-clip-text text-transparent">
+                    <span className="text-3xl font-black bg-linear-to-r from-(--bg-feedback) to-[color-mix(in_srgb,var(--rating-color)_55%,var(--text-h))] bg-clip-text text-transparent">
                       {formatCurrency(product.price)}
                     </span>
                     <span className="pb-1 text-sm font-medium text-(--text-normal)/60 line-through">
                       {formatCurrency(product.oldPrice)}
                     </span>
-                    <span className="mb-1 rounded-full bg-linear-to-r from-(--color-sale) to-[color-mix(in_srgb,var(--color-sale)_60%,#000)] px-2.5 py-0.5 text-[11px] font-bold text-white shadow-sm">
+                    <span className="mb-1 rounded-full bg-linear-to-r from-(--bg-feedback) to-[color-mix(in_srgb,var(--bg-feedback)_60%,#000)] px-2.5 py-0.5 text-[11px] font-bold text-white shadow-sm">
                       {discount}
                     </span>
                   </>
                 ) : (
-                  <span className="text-3xl font-black bg-linear-to-r from-(--color-secondary) to-(--rating-color) bg-clip-text text-transparent">
+                  <span className="text-3xl font-black bg-linear-to-r from-(--bg-feedback) from-25% to-(--rating-color) bg-clip-text text-transparent">
                     {formatCurrency(product.price)}
                   </span>
                 )}
@@ -405,9 +405,9 @@ export default function ProductPage() {
                     onClick={() => ToggleSize({ label })}
                     className={`relative h-12 min-w-14 rounded-2xl border px-4 text-sm font-semibold transition-all duration-200 cursor-pointer disabled:cursor-not-allowed ${
                       size === label
-                        ? "border-transparent bg-linear-to-br from-(--text-h) to-(--color-secondary) text-(--color-main) shadow-lg scale-105"
+                        ? "border-transparent bg-linear-to-br from-(--bg-feedback) to-(--bg-feedback) text-white shadow-lg scale-105"
                         : available
-                          ? "border-(--border-color) bg-(--bg-card) hover:border-(--text-h) hover:-translate-y-0.5"
+                          ? "border-(--border-color) bg-(--bg-card) hover:border-(--bg-feedback) hover:-translate-y-0.5"
                           : "border-(--border-dis) bg-(--bg-dis) text-(--text-normal)/40 overflow-hidden"
                     }`}
                   >
@@ -445,9 +445,8 @@ export default function ProductPage() {
 
               <button
                 onClick={() => handleAdd()}
-                className="group/btn relative flex flex-1 items-center justify-center gap-2 overflow-hidden rounded-2xl bg-linear-to-br from-(--text-h) via-(--text-h) to-(--color-secondary) px-6 text-sm font-bold uppercase tracking-wider text-(--color-main) shadow-(--shado) transition-all hover:-translate-y-0.5 hover:shadow-(--shadow) active:translate-y-0 cursor-pointer"
+                className="group/btn relative flex flex-1 items-center justify-center gap-2 overflow-hidden rounded-2xl bg-(--bg-feedback) px-6 text-sm font-bold uppercase tracking-wider text-white shadow-(--shado) transition-all hover:-translate-y-0.5 hover:shadow-(--shadow) active:translate-y-0 cursor-pointer"
               >
-                <span className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover/btn:translate-x-full" />
                 <span className="relative">Add to bag</span>
                 <ArrowRight
                   size={18}
@@ -538,29 +537,32 @@ export default function ProductPage() {
           </motion.div>
         </div>
       </div>
-      <div className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-3 border-t border-(--border_card) bg-(--bg-navbar)/90 px-4 py-3 backdrop-blur-xl lg:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-50 flex items-center gap-3 border-t border-(--border_card) bg-(--bg-navbar)/90 px-4 py-3 backdrop-blur-xl lg:hidden">
         <div className="leading-tight">
           {product.oldPrice !== 0 ? (
             <>
-              <p className="text-lg font-black text-(--color-sale)">
+              <span className="text-md flex font-black bg-linear-to-r from-(--bg-feedback) to-[color-mix(in_srgb,var(--bg-feedback)_55%,var(--text-h))] bg-clip-text text-transparent">
                 {formatCurrency(product.price)}
-              </p>
-              <p className="text-[11px] text-(--text-normal) line-through">
+              </span>
+              <span className="text-[11px] text-(--text-normal) line-through">
                 {formatCurrency(product.oldPrice)}
-              </p>
+              </span>
             </>
           ) : (
-            <p className="text-lg  bg-linear-to-r from-(--color-secondary) to-(--rating-color) bg-clip-text text-transparent">
+            <span className="text-lg font-bold bg-linear-to-r from-(--bg-feedback) to-[color-mix(in_srgb,var(--bg-feedback)_55%,var(--text-h))] bg-clip-text text-transparent">
               {formatCurrency(product.price)}
-            </p>
+            </span>
           )}
         </div>
         <button
           onClick={() => addToCard(CardProduct)}
-          className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-linear-to-br from-(--text-h) to-(--color-secondary) py-3.5 text-sm font-bold uppercase tracking-wider text-(--color-main) shadow-lg cursor-pointer"
+          className="group/btn relative flex flex-1 items-center justify-center gap-2 py-3 overflow-hidden rounded-2xl bg-(--bg-feedback)  text-sm font-bold uppercase tracking-wider text-white shadow-(--shado) transition-all hover:-translate-y-0.5 hover:shadow-(--shadow) active:translate-y-0 cursor-pointer"
         >
-          Add to bag
-          <ArrowRight size={16} className="rtl:rotate-180" />
+          <span className="relative">Add to bag</span>
+          <ArrowRight
+            size={18}
+            className="relative transition-transform group-hover/btn:translate-x-1 rtl:rotate-180 rtl:group-hover/btn:-translate-x-1"
+          />{" "}
         </button>
       </div>
     </section>

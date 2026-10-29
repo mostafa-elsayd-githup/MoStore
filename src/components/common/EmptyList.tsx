@@ -16,20 +16,20 @@ function EmptyList({ namePage, pageIcon }: EmptyListProps) {
         whileInView="visible"
         variants={slideInRight as Variants}
         viewport={{ once: true }}
-        className="absolute -top-10 -right-2 w-40 h-10 lg:w-56 lg:h-14 lg:-top-14 border-t-2 border-r-2 rounded-tr-[10px] border-(--text-fetch)"
+        className="absolute -top-10 -right-2 w-40 h-10 lg:w-56 lg:h-14 lg:-top-14 border-t-2 border-r-2 rounded-tr-[10px] border-(--bg-feedback)"
       />
       <motion.span
         initial="hidden"
         whileInView="visible"
         variants={slideInLeft as Variants}
         viewport={{ once: true }}
-        className="absolute -bottom-14 -left-2 w-40 h-10 lg:w-56 lg:h-14 lg:-bottom-20 border-b-2 border-l-2 rounded-bl-[10px] border-(--text-fetch)"
+        className="absolute -bottom-14 -left-2 w-40 h-10 lg:w-56 lg:h-14 lg:-bottom-20 border-b-2 border-l-2 rounded-bl-[10px] border-(--bg-feedback)"
       />
       <div className="flex flex-col items-center gap-3 md:gap-4">
         <span >
           {pageIcon}
         </span>
-        <span className="text-(--text-h) font-extrabold text-base md:text-lg lg:text-2xl">
+        <span className="text-(--bg-feedback) font-extrabold text-base md:text-lg lg:text-2xl">
           {namePage}
         </span>
         <p className="text-(--color-secondary) text-center text-sm md:text-base lg:text-xl leading-relaxed lg:leading-loose">

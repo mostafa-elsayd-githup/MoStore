@@ -6,17 +6,18 @@ export const successToastMessage = (
   toast.success(welcomeMessage, {
     position: "bottom-right",
     icon: icon,
-    duration: 4000,
+    duration: 45000,
     style: {
-      background:
-        "linear-gradient(135deg, color-mix(in srgb, var(--rating-color) 22%, var(--bg-card)), var(--bg-card))",
-      color: "var(--text-h)",
+      background: "var(--bg-glassy)/80",
+      color: "var(--bg-feedback)",
       border:
-        "1px solid color-mix(in srgb, var(--rating-color) 35%, var(--border_card))",
+        "1px solid color-mix(in srgb, var(--bg-feedback) 35%, var(--border_card))",
       backdropFilter: "blur(12px)",
       WebkitBackdropFilter: "blur(12px)",
       boxShadow: "var(--shadow)",
       borderRadius: "16px",
+      fontSize: "18px",
+      fontWeight: "bold",
       width: "20rem",
     },
   });
@@ -39,6 +40,8 @@ export const errorToastMessage = (
       WebkitBackdropFilter: "blur(12px)",
       boxShadow: "var(--shadow)",
       borderRadius: "16px",
+      fontSize: "17px",
+      fontWeight: "bold",
       width: "20rem",
     },
   });

@@ -20,7 +20,7 @@ function WishlistPage() {
             pageIcon={
               <Heart
                 size={45}
-                className="text-(--color-main) w-25 h-20 p-2 rounded-3xl bg-(--loader-spinner)"
+                className=" w-25 h-20 p-2 rounded-3xl text-(--bg-feedback)"
               />
             }
           />

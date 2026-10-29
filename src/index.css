@@ -13,6 +13,7 @@
   --bg-card: #fbfaf8;
   --bg-navbar: #fcfbf8;
   --bg-glassy: #ffffff1a;
+  --bg-feedback:#f97316;
   --bg-footer: #f6f4e7;
   --bg-searchinput: #ecebe7;
   --bg-little: #fbfaf8;
@@ -80,6 +81,7 @@
   --bg-little: #212429;
   --bg-badge: #ddd4d4;
   --bg-dis: #1b1e22cc;
+  --bg-feedback: #ff6900; 
   --overlay-bg: #16181bbf;
   --border-footer: #23262b;
   --border-color: #2b2e33;

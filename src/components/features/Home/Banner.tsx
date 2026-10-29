@@ -35,63 +35,61 @@ function HeroSection({
       initial="hidden"
       whileInView="visible"
       variants={fadeInUp as Variants}
-      viewport={{ once: true, margin: "-100px" }}
-      className="relative min-h-100 w-full  overflow-hidden flex items-center "
+      viewport={{ once: true }}
+      className="relative min-h-112.5 sm:min-h-137.5 md:min-h-162.5 lg:min-h-175 w-full overflow-hidden flex items-center px-8"
     >
-      <section className="relative min-h-200 w-full overflow-hidden flex items-center px-8">
-        <picture className="absolute inset-0 w-full h-full">
-          <source media="(min-width: 768px)" srcSet={desktopimg} />
-          <img
-            src={mobileimg}
-            alt={title}
-            className="w-full h-full object-cover object-center"
-          />
-        </picture>
-        <div className="flex flex-col gap-7 z-20">
-          <motion.p
-            variants={slideInLeft as Variants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-4xl  font-bold text-white flex flex-wrap gap-x-3"
-          >
-            {TitleWords.map((word, index) => (
-              <motion.span
-                key={index}
-                variants={wordVariants}
-                className="inline-block"
-              >
-                {word}
-              </motion.span>
-            ))}
-          </motion.p>
-          <motion.p
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-2xl  font-bold text-white flex flex-wrap gap-x-3 leading-16"
-          >
-            {SubTitleWords.map((word, index) => (
-              <motion.span
-                key={index}
-                variants={wordVariants}
-                className="inline-block"
-              >
-                {word}
-              </motion.span>
-            ))}
-          </motion.p>
+      <picture className="absolute inset-0 w-full h-full">
+        <source media="(min-width: 768px)" srcSet={desktopimg} />
+        <img
+          src={mobileimg}
+          alt={title}
+          className="w-full h-full object-cover object-center"
+        />
+      </picture>
+      <div className="flex flex-col gap-3 z-20 md:mr-5">
+        <motion.p
+          variants={slideInLeft as Variants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-2xl sm:text-3xl md:text-4xl font-bold text-white flex flex-wrap gap-x-3"
+        >
+          {TitleWords.map((word, index) => (
+            <motion.span
+              key={index}
+              variants={wordVariants}
+              className="inline-block"
+            >
+              {word}
+            </motion.span>
+          ))}
+        </motion.p>
+        <motion.p
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-sm leading-10 sm:text-lg md:text-xl font-bold text-white flex flex-wrap gap-x-3 "
+        >
+          {SubTitleWords.map((word, index) => (
+            <motion.span
+              key={index}
+              variants={wordVariants}
+              className="inline-block"
+            >
+              {word}
+            </motion.span>
+          ))}
+        </motion.p>
 
-          <MainButton
-            title={PageTitle}
-            btnlink={buttonlink}
-            btntext={buttontext}
-            coloe="white"
-            z_index="-1"
-          />
-        </div>
-      </section>
+        <MainButton
+          title={PageTitle}
+          btnlink={buttonlink}
+          btntext={buttontext}
+          coloe="white"
+          z_index="-1"
+        />
+      </div>
     </motion.section>
   );
 }

@@ -10,9 +10,9 @@ function ProductDetailsComponent() {
   const { cart, clearAll, deleteProduct } = useCartStore();
   return (
     <section>
-      <div className="bg-linear-to-br from-(--bg-card) to-(--bg-primary)  rounded-3xl border border-(--border_card) shadow-(--shadow) p-6 flex justify-around flex-col ml-4">
+      <div className="bg-linear-to-br from-(--bg-card) to-(--bg-primary)  rounded-3xl border border-(--border_card) shadow-(--shadow) p-6 flex justify-around flex-col">
         <div
-          className={`flex flex-col gap-4 px-4 pb-12  ${!cart.length ? null : "overflow-y-auto"}`}
+          className={`flex flex-col gap-4 ${!cart.length ? null : "overflow-y-auto"}`}
         >
           {!cart.length && (
             <EmptyList
@@ -29,8 +29,9 @@ function ProductDetailsComponent() {
             return (
               <div
                 key={`${product.id}-${product.sizes || ""}-${product.colors?.name || ""}`}
-                className="relative group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 p-4 rounded-3xl border border-(--border_card) bg-linear-to-br from-(--bg-card) to-(--bg-primary) shadow-(--shadow-navbar) transition-all duration-300 hover:-translate-y-0.5 hover:shadow-(--shadow)"
+                className="relative group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 p-4 rounded-3xl border border-(--border_card) bg-linear-to-br from-(--bg-card) to-(--bg-primary) shadow-(--shadow-navbar) transition-all duration-300 hover:shadow-(--shadow) overflow-hidden"
               >
+                <div className="absolute top-0 right-0 bottom-0 w-1.5 bg-(--bg-feedback)/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 overflow-hidden rounded-2xl bg-(--bg-primary) border border-(--border_card)">
                   <img
                     src={imageUrl}
@@ -38,15 +39,15 @@ function ProductDetailsComponent() {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   {product.oldPrice && (
-                    <span className="absolute top-2 right-2 rounded-full bg-(--bg-badge) px-2 py-0.5 text-[10px] font-bold text-(--color-main) shadow-sm">
+                    <span className="absolute top-2 right-2 rounded-md bg-(--bg-feedback) px-2 py-0.5 text-[10px] font-bold text-white shadow-sm">
                       {DiscountCalc(product.price, product.oldPrice)}
                     </span>
                   )}
                 </div>
-                <div className="flex flex-col flex-1 min-w-0 gap-2.5 text-start w-full hover:underline">
+                <div className="flex flex-col flex-1 min-w-0 gap-2.5 text-start w-full">
                   <Link
                     to={`/productdetails/${product.id}`}
-                    className="text-base sm:text-lg font-bold leading-snug text-(--text-h) line-clamp-1"
+                    className="text-base sm:text-lg font-bold leading-snug text-(--text-h) line-clamp-1 hover:text-(--bg-feedback) transition-colors"
                   >
                     {product.title}
                   </Link>
@@ -78,16 +79,17 @@ function ProductDetailsComponent() {
                         </strong>
                       </span>
                     )}
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-(--border-color) bg-(--bg-main) text-(--text-normal)">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-(--bg-feedback)/30 bg-(--bg-feedback)/5 text-(--bg-feedback) font-medium">
                       الكمية
-                      <strong className="font-bold text-(--text-h)">
+                      <strong className="font-bold">
                         {product.quantity ?? 1}
                       </strong>
                     </span>
                   </div>
+
                   {(product.quantity ?? 1) > 1 && (
                     <div className="flex items-baseline gap-2 text-xs text-(--text-normal)">
-                      <span>سعر القطعة</span>
+                      <span>سعر القطعة:</span>
                       <span className="font-semibold text-(--text-h)">
                         {formatCurrency(product.price)}
                       </span>
@@ -106,7 +108,7 @@ function ProductDetailsComponent() {
                         <span className="text-[11px] font-medium text-(--text-normal)">
                           الإجمالي · {product.quantity} قطع
                         </span>
-                        <span className="text-xl font-black text-(--color-primary)">
+                        <span className="text-xl font-black text-(--bg-feedback)">
                           {formatCurrency(product.price * product.quantity)}
                         </span>
                         {product.oldPrice ? (
@@ -119,7 +121,7 @@ function ProductDetailsComponent() {
                       </>
                     ) : (
                       <>
-                        <span className="text-xl font-black text-(--color-primary)">
+                        <span className="text-xl font-black text-(--bg-feedback)">
                           {formatCurrency(product.price)}
                         </span>
                         {product.oldPrice ? (
@@ -134,7 +136,7 @@ function ProductDetailsComponent() {
                   <button
                     onClick={() => deleteProduct(product)}
                     aria-label="إزالة من العربة"
-                    className="absolute top-4 left-4 sm:static flex h-10 w-10 items-center justify-center rounded-2xl border border-(--border_card) bg-(--bg-card) text-(--color-sale) shadow-sm transition-all hover:bg-(--color-sale) hover:text-white hover:border-transparent cursor-pointer shrink-0"
+                    className="absolute top-4 left-4 sm:static flex h-10 w-10 items-center justify-center rounded-2xl border border-(--border_card) bg-(--bg-card) text-(--color-sale) shadow-sm transition-all hover:bg-(--bg-feedback) hover:text-white hover:border-transparent cursor-pointer shrink-0"
                   >
                     <Trash2 size={18} />
                   </button>
@@ -142,15 +144,16 @@ function ProductDetailsComponent() {
               </div>
             );
           })}
+
+          {cart.length > 1 && (
+            <button
+              onClick={() => clearAll()}
+              className="w-full py-3.5 px-6 rounded-2xl bg-(--bg-feedback) text-white font-bold shadow-lg shadow-orange-500/20 transition-all duration-300 hover:opacity-95 hover:scale-[1.01] cursor-pointer text-center mt-4"
+            >
+              <span>مسح الكل</span>
+            </button>
+          )}
         </div>
-        {cart.length > 1 && (
-          <button
-            onClick={() => clearAll()}
-            className="w-full py-3.5 px-6 rounded-2xl bg-(--color-primary) text-(--color-main) font-bold shadow-lg transition-all duration-300 hover:opacity-90 hover:scale-[1.01] cursor-pointer text-center"
-          >
-            <span>مسح الكل</span>
-          </button>
-        )}
       </div>
     </section>
   );
