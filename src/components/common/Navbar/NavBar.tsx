@@ -29,7 +29,7 @@ function NavBar() {
           <Logo />
         </div>
 
-        <ul className="lg:flex-1 flex items-center justify-around gap-2 text-[17px] text-(--text-h) md:ml-1">
+        <ul className="lg:flex-1 flex items-center justify-around gap-2 text-[17px] text-(--bg-feedback)/60 md:ml-1">
           {Route.map((item) => (
             <li key={item.id}>
               <NavLink
