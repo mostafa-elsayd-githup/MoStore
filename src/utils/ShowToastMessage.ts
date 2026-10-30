@@ -6,7 +6,7 @@ export const successToastMessage = (
   toast.success(welcomeMessage, {
     position: "bottom-right",
     icon: icon,
-    duration: 45000,
+    duration: 4000,
     style: {
       background: "var(--bg-glassy)/80",
       color: "var(--bg-feedback)",
@@ -16,7 +16,7 @@ export const successToastMessage = (
       WebkitBackdropFilter: "blur(12px)",
       boxShadow: "var(--shadow)",
       borderRadius: "16px",
-      fontSize: "18px",
+      fontSize: "17px",
       fontWeight: "bold",
       width: "20rem",
     },

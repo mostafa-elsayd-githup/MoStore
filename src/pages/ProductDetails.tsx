@@ -16,7 +16,7 @@ import {
   ShoppingCartPlus,
 } from "lucide-react";
 import { DiscountCalc, formatCurrency } from "../utils/formatters";
-import { Link,useNavigate,useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { GetProductById_productDetils } from "../services/GetProduct";
 import { useWishlistStore } from "../store/WishlistStore";
@@ -32,6 +32,7 @@ import {
 } from "../utils/ShowToastMessage";
 import { motion, type Variants } from "framer-motion";
 import { slideInRight, slideInLeft } from "../animations/variants";
+import { useProductDetails } from "../store/ProductDetails";
 const perks = [
   { icon: Truck, title: "Free Delivery", text: "On orders over EGP 999" },
   {
@@ -47,9 +48,7 @@ const perks = [
 ];
 
 export default function ProductPage() {
-  const navigate= useNavigate()
-
-  
+  const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const { data, isError, isPending } = useQuery({
     queryKey: [`produstdetails`, id],
@@ -60,11 +59,15 @@ export default function ProductPage() {
       return await GetProductById_productDetils({ productId: id, signal });
     },
   });
-
+  const objctColor = { id: 0, name: "", hex: "" };
   const wishlistItems = useWishlistStore((state) => state.Wishlist);
   const addToCard = useCartStore((state) => state.toggleCart);
   const toggleWishlist = useWishlistStore((state) => state.ToggleWishlist);
-
+  const [activeImg, setActiveImg] = useState(1);
+  const [color, setColor] = useState(objctColor);
+  const [qty, setQty] = useState(1);
+  const [openAcc, setOpenAcc] = useState<string | null>("description");
+  const [showError, setShowError] = useState(false);
   const product: ProductDetailsType = {
     brand: "MOstore",
     id: data?.id ?? 0,
@@ -99,22 +102,10 @@ export default function ProductPage() {
     ].filter(Boolean),
     details: (data && data.details.map((item) => item)) || [],
   };
-  const isLiked = wishlistItems.some((item) => item.id === product.id);
   const discount = DiscountCalc(product.price, product.oldPrice);
+  const isLiked = wishlistItems.some((item) => item.id === product.id);
+  const { size, toggleSize } = useProductDetails();
 
-  const [activeImg, setActiveImg] = useState(1);
-  const [size, setSize] = useState<string | null>(null);
-  const [color, setColor] = useState({ id: 0, name: "", hex: "" });
-  const [qty, setQty] = useState(1);
-  const [openAcc, setOpenAcc] = useState<string | null>("description");
-  const [showError, setShowError] = useState(false);
-
-  const CardProduct: cartType = {
-    ...product,
-    colors: { ...color },
-    sizes: size ?? "",
-    quantity: qty,
-  };
   const handleAdd = () => {
     if (!size || !color.hex) {
       setShowError(true);
@@ -127,20 +118,25 @@ export default function ProductPage() {
         `تمت إضافة المنتج إلى حقيبة التسوق`,
         <ShoppingCart size={20} />,
       );
+      setColor(objctColor);
+      setQty(1);
+      toggleSize("");
     } else if (result === "incremented") {
       successToastMessage(
         `تم تحديث الكمية بنجاح (+1 في السلة)`,
         <ShoppingCartPlus size={20} />,
       );
+      setColor(objctColor);
+      setQty(1);
+      toggleSize("");
     }
   };
-  const ToggleSize = ({ label }: { label: string }) => {
-    if (size === label) {
-      setSize("");
-      return;
-    }
-    setSize(label);
-    setShowError(false);
+
+  const CardProduct: cartType = {
+    ...product,
+    colors: { ...color },
+    sizes: size ?? "",
+    quantity: qty,
   };
   const handleAddtoWishlist = (product: AddToWishlist) => {
     const result = toggleWishlist(product);
@@ -186,11 +182,17 @@ export default function ProductPage() {
       />
       <div className="container mx-auto px-4 py-8 pb-28 lg:pb-12">
         <nav className="mb-6 flex items-center gap-2 text-xs text-(--text-normal)">
-          <Link to="/" className="hover:text-(--bg-feedback) cursor-pointer transition-colors">
+          <Link
+            to="/"
+            className="hover:text-(--bg-feedback) cursor-pointer transition-colors"
+          >
             Home
           </Link>
           <span>/</span>
-          <button onClick={()=>navigate(-1)} className="hover:text-(--bg-feedback) cursor-pointer transition-colors">
+          <button
+            onClick={() => navigate(-1)}
+            className="hover:text-(--bg-feedback) cursor-pointer transition-colors"
+          >
             {product.type}
           </button>
           <span>/</span>
@@ -405,7 +407,7 @@ export default function ProductPage() {
                   <button
                     key={label}
                     disabled={!available}
-                    onClick={() => ToggleSize({ label })}
+                    onClick={() => toggleSize(label)}
                     className={`relative h-12 min-w-14 rounded-2xl border px-4 text-sm font-semibold transition-all duration-200 cursor-pointer disabled:cursor-not-allowed ${
                       size === label
                         ? "border-transparent bg-linear-to-br from-(--bg-feedback) to-(--bg-feedback) text-white shadow-lg scale-105"
@@ -542,7 +544,7 @@ export default function ProductPage() {
       </div>
       <div className="fixed inset-x-0 bottom-0 z-50 flex items-center gap-3 border-t border-(--border_card) bg-(--bg-navbar)/90 px-4 py-3 backdrop-blur-xl lg:hidden">
         <button
-          onClick={() => addToCard(CardProduct)}
+          onClick={() => handleAdd()}
           className="group/btn relative flex flex-1 items-center justify-center gap-2 py-3 overflow-hidden rounded-2xl bg-(--bg-feedback)  text-sm font-bold uppercase tracking-wider text-white shadow-(--shado) transition-all hover:-translate-y-0.5 hover:shadow-(--shadow) active:translate-y-0 cursor-pointer"
         >
           <span className="relative">Add to bag</span>

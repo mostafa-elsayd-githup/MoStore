@@ -9,11 +9,7 @@ function ProductDetailsComponent() {
   const { pageTitle } = usePageTitle();
   const { cart, clearAll, deleteProduct } = useCartStore();
   return (
-    <section>
-      <div className="bg-linear-to-br from-(--bg-card) to-(--bg-primary)  rounded-3xl border border-(--border_card) shadow-(--shadow) p-6 flex justify-around flex-col">
-        <div
-          className={`flex flex-col gap-4 ${!cart.length ? null : "overflow-y-auto"}`}
-        >
+<div className="bg-linear-to-br from-(--bg-card) to-(--bg-primary) rounded-3xl border border-(--border_card) shadow-(--shadow) p-6 flex flex-col min-h-100 max-h-132 overflow-hidden">       <div className={`flex flex-col gap-4 flex-1 ${!cart.length ? "justify-center" : "overflow-y-auto pe-2"}`}>
           {!cart.length && (
             <EmptyList
               namePage={pageTitle}
@@ -27,10 +23,10 @@ function ProductDetailsComponent() {
               ? product.image[0]
               : product.image;
             return (
-              <div
-                key={`${product.id}-${product.sizes || ""}-${product.colors?.name || ""}`}
-                className="relative group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 p-4 rounded-3xl border border-(--border_card) bg-linear-to-br from-(--bg-card) to-(--bg-primary) shadow-(--shadow-navbar) transition-all duration-300 hover:shadow-(--shadow) overflow-hidden"
-              >
+             <div
+          key={`${product.id}-${product.sizes || ""}-${product.colors?.name || ""}`}
+          className="relative group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 p-4 rounded-3xl border border-(--border_card) bg-linear-to-br from-(--bg-card) to-(--bg-primary) shadow-(--shadow-navbar) transition-all duration-300 hover:shadow-(--shadow) overflow-hidden shrink-0"
+        >
                 <div className="absolute top-0 right-0 bottom-0 w-1.5 bg-(--bg-feedback)/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 overflow-hidden rounded-2xl bg-(--bg-primary) border border-(--border_card)">
                   <img
@@ -44,10 +40,10 @@ function ProductDetailsComponent() {
                     </span>
                   )}
                 </div>
-                <div className="flex flex-col flex-1 min-w-0 gap-2.5 text-start w-full">
+                <div className="flex flex-col flex-1 gap-2.5 text-start w-full">
                   <Link
                     to={`/productdetails/${product.id}`}
-                    className="text-base sm:text-lg font-bold leading-snug text-(--text-h) line-clamp-1 hover:text-(--bg-feedback) transition-colors"
+                    className="text-sm md:text-md lg:text-lg font-bold leading-snug text-(--text-h) line-clamp-1 hover:text-(--bg-feedback) transition-colors"
                   >
                     {product.title}
                   </Link>
@@ -145,6 +141,7 @@ function ProductDetailsComponent() {
             );
           })}
 
+        </div>
           {cart.length > 1 && (
             <button
               onClick={() => clearAll()}
@@ -153,9 +150,8 @@ function ProductDetailsComponent() {
               <span>مسح الكل</span>
             </button>
           )}
-        </div>
       </div>
-    </section>
+ 
   );
 }
 

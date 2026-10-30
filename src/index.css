@@ -137,6 +137,20 @@ body {
   margin: 0;
 }
 
+@media (min-width: 1921px) {
+  body {
+    background: var(--bg-main);
+  }
+
+  #root {
+    max-width: 1920px;
+  }
+
+  #root header > div {
+    max-width: 1920px;
+  }
+}
+
 h1,
 h2 {
   font-family: var(--heading);
